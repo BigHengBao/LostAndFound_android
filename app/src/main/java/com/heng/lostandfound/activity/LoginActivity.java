@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("mobile", account);
+        params.put("account", account);
         params.put("password", pwd);
         Api.config(ApiConfig.LOGIN, params).postRequest(this, new ApiCallback() {
             @Override
