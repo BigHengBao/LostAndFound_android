@@ -45,10 +45,11 @@ public class Api {
 
     // post请求
     public void postRequest(Context context, final ApiCallback callback) {
+        System.out.println("postRequest:" + mParams.toString());
         JSONObject jsonObject = new JSONObject(mParams);
         String jsonStr = jsonObject.toString();
 
-        Log.e("", "login postRequest: jsonStr"+jsonStr);
+        Log.e("", " postRequest: jsonStr" + jsonStr);
 
 
         RequestBody requestBodyJson =

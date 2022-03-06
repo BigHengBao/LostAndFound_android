@@ -1,9 +1,5 @@
 package com.heng.lostandfound.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +11,7 @@ import com.heng.lostandfound.R;
 import com.heng.lostandfound.api.Api;
 import com.heng.lostandfound.api.ApiCallback;
 import com.heng.lostandfound.api.ApiConfig;
-import com.heng.lostandfound.entity.LoginResponse;
+import com.heng.lostandfound.entity.MyResponse;
 import com.heng.lostandfound.utils.StringUtils;
 
 import java.util.HashMap;
@@ -24,18 +20,25 @@ import java.util.HashMap;
  * 登陆界面
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     EditText accountEd, pwdEd;
-    Button loginBtn;
+    Button loginBtn, toRegisterBtn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+    protected int initLayout() {
+        return R.layout.activity_login;
+    }
 
+    @Override
+    protected void initView() {
         accountEd = findViewById(R.id.ed_login_account);
         pwdEd = findViewById(R.id.ed_login_pwd);
         loginBtn = findViewById(R.id.btn_login);
+        toRegisterBtn = findViewById(R.id.btn_to_register);
+    }
+
+    @Override
+    protected void initData() {
         loginBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -43,6 +46,13 @@ public class LoginActivity extends AppCompatActivity {
                 String account = accountEd.getText().toString().trim();
                 String pwd = pwdEd.getText().toString().trim();
                 login(account, pwd);
+            }
+        });
+
+        toRegisterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(RegisterActivity.class);
             }
         });
     }
@@ -58,16 +68,20 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("front", "android");
+        params.put("requestId", "login");
         params.put("account", account);
         params.put("password", pwd);
+
+
         Api.config(ApiConfig.LOGIN, params).postRequest(this, new ApiCallback() {
             @Override
             public void onSuccess(final String res) {
                 Log.e("onSuccess", res);
                 Gson gson = new Gson();
-                LoginResponse loginResponse = gson.fromJson(res, LoginResponse.class);
-                if (loginResponse.isResult()) {
-                    Log.e("", "onSuccess: " + loginResponse);
+                MyResponse myResponse = gson.fromJson(res, MyResponse.class);
+                if (myResponse.isResult()) {
+                    Log.e("", "onSuccess: " + myResponse);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

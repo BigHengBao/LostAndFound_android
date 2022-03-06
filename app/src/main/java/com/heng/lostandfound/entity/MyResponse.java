@@ -5,13 +5,23 @@ package com.heng.lostandfound.entity;
  * @date : 2022/3/5 10:44
  */
 
-public class LoginResponse {
+public class MyResponse {
     private String requestId;
     private boolean result;
+    private String msg;
 
-    public LoginResponse(String requestId, boolean result) {
+    public MyResponse(String requestId, boolean result, String msg) {
         this.requestId = requestId;
         this.result = result;
+        this.msg = msg;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public String getRequestId() {
@@ -35,6 +45,7 @@ public class LoginResponse {
         return "LoginResponse{" +
                 "requestId='" + requestId + '\'' +
                 ", result=" + result +
+                ", msg='" + msg + '\'' +
                 '}';
     }
 }

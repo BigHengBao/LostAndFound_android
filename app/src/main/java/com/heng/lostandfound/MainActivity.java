@@ -13,21 +13,23 @@ import com.heng.lostandfound.activity.LoginActivity;
  * 主界面
  */
 public class MainActivity extends AppCompatActivity {
-    Button toLoginBtn;
+//    Button toLoginBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toLoginBtn = findViewById(R.id.btn_tologin);
-        toLoginBtn.setOnClickListener(new View.OnClickListener() {
+        startActivity(new Intent(this,LoginActivity.class));
 
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            }
-        });
+//        toLoginBtn = findViewById(R.id.btn_tologin);
+//        toLoginBtn.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+//            }
+//        });
     }
 
 
