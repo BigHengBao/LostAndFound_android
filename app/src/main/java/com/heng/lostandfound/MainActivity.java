@@ -1,35 +1,85 @@
 package com.heng.lostandfound;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import com.flyco.tablayout.CommonTabLayout;
+import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.heng.lostandfound.activity.BaseActivity;
+import com.heng.lostandfound.adapter.MyPagerAdapter;
+import com.heng.lostandfound.entity.TabEntity;
+import com.heng.lostandfound.fragment.HomeFragment;
+import com.heng.lostandfound.fragment.MyFragment;
+import com.heng.lostandfound.fragment.NewsFragment;
 
-import com.heng.lostandfound.activity.LoginActivity;
+import java.util.ArrayList;
 
 /**
  * 主界面
  */
-public class MainActivity extends AppCompatActivity {
-//    Button toLoginBtn;
+public class MainActivity extends BaseActivity {
+    private CommonTabLayout commonTabLayout;
+    private String[] mTitles = {"首页", "资讯", "我的"};
+    private int[] mIconUnselectIds = {
+            R.mipmap.home_unselect, R.mipmap.collect_unselect,
+            R.mipmap.my_unselect};
+    private int[] mIconSelectIds = {
+            R.mipmap.home_selected, R.mipmap.collect_selected,
+            R.mipmap.my_selected};
+    private ViewPager viewPager;
+    private ArrayList<Fragment> mFragments = new ArrayList<>();
+    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int initLayout() {
+        return R.layout.activity_main;
+    }
 
-        startActivity(new Intent(this,LoginActivity.class));
+    @Override
+    protected void initView() {
+        viewPager = findViewById(R.id.viewpager);
+        commonTabLayout = findViewById(R.id.commonTabLayout);
+    }
 
-//        toLoginBtn = findViewById(R.id.btn_tologin);
-//        toLoginBtn.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-//            }
-//        });
+    @Override
+    protected void initData() {
+        mFragments.add(HomeFragment.newInstance());
+        mFragments.add(NewsFragment.newInstance());
+        mFragments.add(MyFragment.newInstance());
+        for (int i = 0; i < mTitles.length; i++) {
+            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+        }
+        commonTabLayout.setTabData(mTabEntities);
+        commonTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                viewPager.setCurrentItem(position);
+            }
+
+            @Override
+            public void onTabReselect(int position) {
+            }
+        });
+
+        viewPager.setOffscreenPageLimit(mFragments.size());
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                commonTabLayout.setCurrentTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), mTitles, mFragments));
     }
 
 

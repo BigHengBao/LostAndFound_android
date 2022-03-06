@@ -96,7 +96,7 @@ public class RegisterActivity extends BaseActivity {
         HashMap<String, Object> params = new HashMap<String, Object>();
         params.put("front", "android");
         params.put("requestId", "register");
-        params.put("user",gson.toJson(user));
+        params.put("user", gson.toJson(user));
 
         System.out.println("register:" + params.toString());
         Api.config(ApiConfig.REGISTER, params).postRequest(this, new ApiCallback() {
@@ -109,7 +109,7 @@ public class RegisterActivity extends BaseActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                          showToast("注册成功!");
+                            showToast("注册成功!");
                         }
                     });
 
