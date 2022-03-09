@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.heng.lostandfound.MainActivity;
 import com.heng.lostandfound.R;
 import com.heng.lostandfound.api.Api;
 import com.heng.lostandfound.api.ApiCallback;
@@ -86,6 +87,7 @@ public class LoginActivity extends BaseActivity {
                         @Override
                         public void run() {
                             Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_SHORT).show();
+                            navigateTo(MainActivity.class);
                         }
                     });
 
