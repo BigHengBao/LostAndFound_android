@@ -7,20 +7,20 @@ import com.heng.lostandfound.R;
  * @date : 2022/3/6 17:17
  */
 
-public class MyFragment extends BaseFragment {
+public class MeFragment extends BaseFragment {
 
 
-    public MyFragment() {
+    public MeFragment() {
     }
 
-    public static MyFragment newInstance() {
-        MyFragment fragment = new MyFragment();
+    public static MeFragment newInstance() {
+        MeFragment fragment = new MeFragment();
         return fragment;
     }
 
     @Override
     protected int initLayout() {
-        return R.layout.fragment_my;
+        return R.layout.fragment_me;
     }
 
     @Override

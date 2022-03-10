@@ -10,8 +10,8 @@ import com.heng.lostandfound.activity.BaseActivity;
 import com.heng.lostandfound.adapter.MyPagerAdapter;
 import com.heng.lostandfound.entity.TabEntity;
 import com.heng.lostandfound.fragment.HomeFragment;
-import com.heng.lostandfound.fragment.MyFragment;
-import com.heng.lostandfound.fragment.NewsFragment;
+import com.heng.lostandfound.fragment.MeFragment;
+import com.heng.lostandfound.fragment.NoticeFragment;
 
 import java.util.ArrayList;
 
@@ -45,8 +45,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initData() {
         mFragments.add(HomeFragment.newInstance());
-        mFragments.add(NewsFragment.newInstance());
-        mFragments.add(MyFragment.newInstance());
+        mFragments.add(NoticeFragment.newInstance());
+        mFragments.add(MeFragment.newInstance());
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
         }
