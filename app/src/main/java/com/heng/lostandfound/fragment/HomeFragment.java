@@ -30,6 +30,7 @@ import com.heng.lostandfound.api.ApiConfig;
 import com.heng.lostandfound.entity.HomeGVItem;
 import com.heng.lostandfound.entity.MyResponse;
 import com.heng.lostandfound.entity.RecyclerItem;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,9 +51,10 @@ public class HomeFragment extends BaseFragment {
 
     private RecyclerView mRecyclerView;
     private HomeRecyclerAdapter mHomeAdapter;
-    private List<RecyclerItem> mList = new ArrayList<>();;
+    private List<RecyclerItem> mList = new ArrayList<>();
 
-    List<HomeGVItem> mDatas;
+    List<HomeGVItem> mDatas = new ArrayList<>();
+
     private HomeGVAdapter adapter;
 
     //todo: 声明图片数组
@@ -125,7 +127,8 @@ public class HomeFragment extends BaseFragment {
                      * 相当于走了两部，json->list,list<object>-->list<RecyclerItem>
                      */
 
-                    List<RecyclerItem> list =gson.fromJson(myResponse.getMsg(), new TypeToken<List<RecyclerItem>>() {}.getType());
+                    List<RecyclerItem> list = gson.fromJson(myResponse.getMsg(), new TypeToken<List<RecyclerItem>>() {
+                    }.getType());
                     mList.addAll(list);
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
@@ -150,7 +153,6 @@ public class HomeFragment extends BaseFragment {
 
             }
         });
-
     }
 
     //todo: 完成定时装置，实现自动滑动的效果
@@ -261,26 +263,75 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initGV() {
-
         HomeGVItem allItems = new HomeGVItem("全部物品", null, "", "");
-        HomeGVItem electronic = new HomeGVItem("电子产品", null, "", "");
-        HomeGVItem books = new HomeGVItem("书籍文具", null, "", "");
-        HomeGVItem financialDocs = new HomeGVItem("财务证件", null, "", "");
-        HomeGVItem foods = new HomeGVItem("食品相关", null, "", "");
-        HomeGVItem house = new HomeGVItem("家居用品", null, "", "");
-        HomeGVItem others = new HomeGVItem("杂七杂八", null, "", "");
+        mDatas.add(allItems);
+
+        //获取网络数据
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("front", "android");
+        params.put("requestId", "getGoodsTypes");
+
+        Api.config(ApiConfig.GET_ALL_GOODS_TYPE, params).postRequest(getActivity(), new ApiCallback() {
+            @SuppressLint("LongLogTag")
+            @Override
+            public void onSuccess(final String res) {
+                Log.e("HomeFragment getGoodsTypes onSuccess", res);
+                Gson gson = new Gson();
+                MyResponse myResponse = gson.fromJson(res, MyResponse.class);
+                if (myResponse.isResult()) {
+                    Log.e("", "onSuccess: " + myResponse);
+
+                    /**
+                     * 解析赋值
+                     * 把Json字符串 解析成List<RecyclerItem>
+                     * 相当于走了两部，json->list,list<object>-->list<RecyclerItem>
+                     */
+
+                    List<HomeGVItem> goodsTypeList = gson.fromJson(myResponse.getMsg(),
+                            new TypeToken<List<HomeGVItem>>() {}.getType());
+
+                    mDatas.addAll(goodsTypeList);
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getActivity(), "物品类别数据更新成功", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                } else {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getActivity(), "物品类别数据更新失败", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+
+            }
+        });
+
+
+//        HomeGVItem electronic = new HomeGVItem("电子产品", null, "", "");
+//        HomeGVItem books = new HomeGVItem("书籍文具", null, "", "");
+//        HomeGVItem financialDocs = new HomeGVItem("财务证件", null, "", "");
+//        HomeGVItem foods = new HomeGVItem("食品相关", null, "", "");
+//        HomeGVItem house = new HomeGVItem("家居用品", null, "", "");
+//        HomeGVItem others = new HomeGVItem("杂七杂八", null, "", "");
         HomeGVItem waiting = new HomeGVItem("待续", null, "", "");
 
 
-        mDatas = new ArrayList<>();
-
-        mDatas.add(allItems);
-        mDatas.add(electronic);
-        mDatas.add(books);
-        mDatas.add(financialDocs);
-        mDatas.add(foods);
-        mDatas.add(house);
-        mDatas.add(others);
+//        mDatas.add(electronic);
+//        mDatas.add(books);
+//        mDatas.add(financialDocs);
+//        mDatas.add(foods);
+//        mDatas.add(house);
+//        mDatas.add(others);
         mDatas.add(waiting);
 
         //todo: 创建适配器对象

@@ -2,8 +2,6 @@ package com.heng.lostandfound.entity;
 
 import android.graphics.Bitmap;
 
-import java.sql.Timestamp;
-
 /**
  * @author : HengZhang
  * @date : 2022/3/10 13:24

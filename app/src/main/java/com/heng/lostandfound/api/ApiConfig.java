@@ -11,4 +11,5 @@ public class ApiConfig {
     public static final String LOGIN = "/user/login"; //登录
     public static final String REGISTER = "/user/register"; //登录
     public static final String GET_ALL_ORDER = "/order/getOrderList"; //获得所有的order
+    public static final String GET_ALL_GOODS_TYPE = "/order/getAllGoodsType"; //获得所有的goodsType
 }
