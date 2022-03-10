@@ -20,13 +20,13 @@ import java.util.ArrayList;
  */
 public class MainActivity extends BaseActivity {
     private CommonTabLayout commonTabLayout;
-    private String[] mTitles = {"首页", "资讯", "我的"};
+    private String[] mTitles = {"首页", "招领", "我的"};
     private int[] mIconUnselectIds = {
-            R.mipmap.home_unselect, R.mipmap.collect_unselect,
-            R.mipmap.my_unselect};
+            R.mipmap.application_false, R.mipmap.add_false,
+            R.mipmap.me_false};
     private int[] mIconSelectIds = {
-            R.mipmap.home_selected, R.mipmap.collect_selected,
-            R.mipmap.my_selected};
+            R.mipmap.application_true, R.mipmap.add_true,
+            R.mipmap.me_true};
     private ViewPager viewPager;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();

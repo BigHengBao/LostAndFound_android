@@ -8,15 +8,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="主界面"
-        android:background="#ffc93c"
-        android:textSize="30sp" />
-
     <com.heng.lostandfound.view.FixedViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
@@ -40,9 +31,9 @@
         tl:tl_iconWidth="30dp"
         tl:tl_indicator_color="#2C97DE"
         tl:tl_indicator_height="0dp"
-        tl:tl_textSelectColor="#0025ff"
+        tl:tl_textSelectColor="#252a34"
         tl:tl_textUnselectColor="#454544"
-        tl:tl_textsize="14sp"
+        tl:tl_textsize="16sp"
         tl:tl_underline_color="#DDDDDD"
         tl:tl_underline_height="1dp" />
 </LinearLayout>

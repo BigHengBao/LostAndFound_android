@@ -102,7 +102,7 @@ public class RegisterActivity extends BaseActivity {
         Api.config(ApiConfig.REGISTER, params).postRequest(this, new ApiCallback() {
             @Override
             public void onSuccess(final String res) {
-                Log.e("onSuccess", res);
+                Log.e("Register onSuccess", res);
                 MyResponse myResponse = gson.fromJson(res, MyResponse.class);
                 if (myResponse.isResult()) {
                     Log.e("", "onSuccess: " + myResponse);

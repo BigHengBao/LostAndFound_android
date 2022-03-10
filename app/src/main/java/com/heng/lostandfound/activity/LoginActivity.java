@@ -36,6 +36,10 @@ public class LoginActivity extends BaseActivity {
         pwdEd = findViewById(R.id.ed_login_pwd);
         loginBtn = findViewById(R.id.btn_login);
         toRegisterBtn = findViewById(R.id.btn_to_register);
+
+        //todo: 方便测试，后期删除
+        accountEd.setText("20191112522");
+        pwdEd.setText("123456");
     }
 
     @Override
@@ -78,7 +82,7 @@ public class LoginActivity extends BaseActivity {
         Api.config(ApiConfig.LOGIN, params).postRequest(this, new ApiCallback() {
             @Override
             public void onSuccess(final String res) {
-                Log.e("onSuccess", res);
+                Log.e("LoginActivity onSuccess", res);
                 Gson gson = new Gson();
                 MyResponse myResponse = gson.fromJson(res, MyResponse.class);
                 if (myResponse.isResult()) {

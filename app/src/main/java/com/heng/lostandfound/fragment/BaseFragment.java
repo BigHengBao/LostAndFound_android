@@ -21,7 +21,7 @@ import butterknife.Unbinder;
  * title: fragment的基类
  */
 
-public abstract class BaseFragment  extends Fragment {
+public abstract class BaseFragment extends Fragment {
     protected View mRootView;
     private Unbinder unbinder;
 

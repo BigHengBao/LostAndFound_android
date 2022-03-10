@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/main_back"
@@ -51,59 +52,64 @@
             android:layout_height="0dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <TextView
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:src="@mipmap/search" />
+
+            <EditText
+                android:singleLine="true"
+                android:id="@+id/home_search_ed"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="广告位"
-                android:textSize="40sp" />
-
+                android:layout_height="40dp"
+                android:background="@drawable/shape_search_btn"
+                android:hint="请输入想要找的物品" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="1">
+            android:layout_marginTop="10dp"
+            android:layout_weight="4"
+            android:orientation="vertical">
 
-            <TextView
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/home_img_vp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="搜索栏"
-                android:textSize="20sp" />
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <LinearLayout
+                android:id="@+id/home_point"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:orientation="horizontal" />
 
         </LinearLayout>
 
-        <LinearLayout
+        <GridView
+            android:id="@+id/home_gv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="1">
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="4"
+            android:background="@color/white_background"
+            android:numColumns="4" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="用做分类"
-                android:textSize="40sp" />
-
-        </LinearLayout>
-
-        <TextView
+        <!--写入完整包名-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="3"
-            android:background="@color/teal_200"
-            android:gravity="center"
-            android:text="用于显示"
-            android:textSize="30sp" />
-
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="5"
+            android:background="@color/white_background" />
     </LinearLayout>
 </LinearLayout>
