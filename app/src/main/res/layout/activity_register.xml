@@ -30,8 +30,9 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="right"
+            android:textColor="@color/black"
             android:text="注: 带  * 号为必填项"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
 
         <LinearLayout
@@ -46,7 +47,8 @@
                 android:layout_weight="2"
                 android:gravity="right"
                 android:text="用户名*："
-                android:textSize="25sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/ed_register_account"
@@ -71,7 +73,8 @@
                 android:layout_weight="2"
                 android:gravity="right"
                 android:text="密码*："
-                android:textSize="25sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/ed_register_password"
@@ -97,7 +100,8 @@
                 android:layout_weight="2"
                 android:gravity="right"
                 android:text="确认密码*："
-                android:textSize="25sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/ed_register_is_password"
@@ -157,7 +161,8 @@
                 android:layout_weight="2"
                 android:gravity="right"
                 android:text="真实姓名*："
-                android:textSize="25sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/ed_register_rname"
@@ -182,7 +187,8 @@
                 android:layout_weight="2"
                 android:gravity="right"
                 android:text="联系方式*："
-                android:textSize="25sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/ed_register_phone"
@@ -207,7 +213,8 @@
                 android:layout_weight="2"
                 android:gravity="right"
                 android:text="地址*："
-                android:textSize="25sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/ed_register_address"
@@ -232,7 +239,8 @@
                 android:layout_weight="2"
                 android:gravity="right"
                 android:text="个人介绍："
-                android:textSize="25sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/ed_register_write"
@@ -257,7 +265,8 @@
                 android:layout_weight="2"
                 android:gravity="right"
                 android:text="头像："
-                android:textSize="25sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/ed_register_image"

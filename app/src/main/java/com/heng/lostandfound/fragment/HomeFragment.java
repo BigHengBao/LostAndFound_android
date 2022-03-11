@@ -249,6 +249,7 @@ public class HomeFragment extends BaseFragment {
                     case 0:
 //                        intent = new Intent(getContext(), InCodeActivity.class);
 //                        startActivity(intent);
+                        initGV();
                         showToast("这是第" + position + "个");
                         break;
                     case 1:
@@ -263,6 +264,9 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initGV() {
+        if (mDatas.size() > 7) {
+            return;
+        }
         HomeGVItem allItems = new HomeGVItem("全部物品", null, "", "");
         mDatas.add(allItems);
 
@@ -288,7 +292,8 @@ public class HomeFragment extends BaseFragment {
                      */
 
                     List<HomeGVItem> goodsTypeList = gson.fromJson(myResponse.getMsg(),
-                            new TypeToken<List<HomeGVItem>>() {}.getType());
+                            new TypeToken<List<HomeGVItem>>() {
+                            }.getType());
 
                     mDatas.addAll(goodsTypeList);
 

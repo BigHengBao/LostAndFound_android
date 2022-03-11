@@ -2,13 +2,15 @@ package com.heng.lostandfound.fragment;
 
 import com.heng.lostandfound.R;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * @author : HengZhang
  * @date : 2022/3/6 17:17
  */
 
 public class MeFragment extends BaseFragment {
-
+    CircleImageView iconIv;
 
     public MeFragment() {
     }

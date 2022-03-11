@@ -17,6 +17,7 @@
         android:textSize="40sp" />
 
     <TextView
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
@@ -45,6 +46,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="账号:"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <EditText
@@ -53,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:hint="请输入账号"
+                android:textColor="@color/black"
                 android:singleLine="true"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -66,6 +69,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -81,11 +85,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:hint="请输入密码"
+                android:textColor="@color/black"
                 android:password="true"
                 android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
@@ -103,8 +109,9 @@
                 android:layout_weight="2"
                 android:checked="true"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:text="我已同意用户隐私约定"
-                android:textSize="15sp" />
+                android:textSize="12sp" />
 
             <View
                 android:layout_width="0dp"
@@ -135,8 +142,9 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:text="没有账户？注册一个"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <Button
