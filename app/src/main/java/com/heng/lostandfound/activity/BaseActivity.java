@@ -38,8 +38,4 @@ public abstract class BaseActivity extends AppCompatActivity {
         Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 
-    public void navigateTo(Class cls) {
-        Intent in = new Intent(mContext, cls);
-        startActivity(in);
-    }
 }

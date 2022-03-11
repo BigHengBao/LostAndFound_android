@@ -29,6 +29,6 @@ public  class Constant {
 
     //订单类型
     public static final Integer ORDER_TYPE_LOOKING = 0;
-    public static final Integer ORDER_TYPE_GET = 0;
+    public static final Integer ORDER_TYPE_GET = 1;
 
 }

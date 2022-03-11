@@ -1,5 +1,8 @@
 package com.heng.lostandfound;
 
+import android.os.Bundle;
+import android.util.Log;
+
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -31,6 +34,7 @@ public class MainActivity extends BaseActivity {
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
+
     @Override
     protected int initLayout() {
         return R.layout.activity_main;
@@ -44,6 +48,13 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+
+        String userAccount = (String) getIntent().getSerializableExtra("userAccount");
+        Log.e("TAG", "initData: userAccount: " + userAccount);
+        //todo: 加载数据到内存里
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("userAccount", userAccount);
+
         mFragments.add(HomeFragment.newInstance());
         mFragments.add(NoticeFragment.newInstance());
         mFragments.add(MeFragment.newInstance());

@@ -1,5 +1,6 @@
 package com.heng.lostandfound.activity;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import com.heng.lostandfound.api.Api;
 import com.heng.lostandfound.api.ApiCallback;
 import com.heng.lostandfound.api.ApiConfig;
 import com.heng.lostandfound.entity.MyResponse;
+import com.heng.lostandfound.entity.User;
 import com.heng.lostandfound.utils.StringUtils;
 
 import java.util.HashMap;
@@ -57,7 +59,8 @@ public class LoginActivity extends BaseActivity {
         toRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navigateTo(RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -91,7 +94,11 @@ public class LoginActivity extends BaseActivity {
                         @Override
                         public void run() {
                             Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_SHORT).show();
-                            navigateTo(MainActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            //todo: 添加用户数据
+                            intent.putExtra("userAccount",account);
+                            startActivity(intent);
+                            finish();
                         }
                     });
 

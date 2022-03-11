@@ -129,7 +129,12 @@ public class HomeFragment extends BaseFragment {
 
                     List<RecyclerItem> list = gson.fromJson(myResponse.getMsg(), new TypeToken<List<RecyclerItem>>() {
                     }.getType());
-                    mList.addAll(list);
+                    mList.clear();
+                    for (RecyclerItem recyclerItem : list) {
+                        if (!mList.contains(recyclerItem)) {
+                            mList.add(recyclerItem);
+                        }
+                    }
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -250,6 +255,9 @@ public class HomeFragment extends BaseFragment {
 //                        intent = new Intent(getContext(), InCodeActivity.class);
 //                        startActivity(intent);
                         initGV();
+                        //装配所有的启事信息
+                        getAllOrder();
+                        initRecycler();
                         showToast("这是第" + position + "个");
                         break;
                     case 1:
