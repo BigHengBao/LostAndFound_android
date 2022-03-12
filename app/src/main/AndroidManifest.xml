@@ -3,18 +3,9 @@
     package="com.heng.lostandfound">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <!--允许应用程序改变网络状态-->
-
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-
-    <!--允许应用程序改变WIFI连接状态-->
-
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-
-    <!--允许应用程序访问WIFI网卡的网络信息-->
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许应用程序改变网络状态 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 允许应用程序改变WIFI连接状态 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 允许应用程序访问WIFI网卡的网络信息 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
@@ -26,6 +17,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LostAndFound">
         <activity
+            android:name=".activity.PluginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.SettingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.AllUseActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.CodeActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.RegisterActivity"
             android:exported="true" />
         <activity
@@ -36,7 +39,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".MainActivity"

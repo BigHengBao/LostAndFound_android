@@ -138,7 +138,7 @@ public class HomeFragment extends BaseFragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getActivity(), "数据更新成功", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getActivity(), "数据更新成功", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -308,7 +308,7 @@ public class HomeFragment extends BaseFragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getActivity(), "物品类别数据更新成功", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getActivity(), "物品类别数据更新成功", Toast.LENGTH_SHORT).show();
                         }
                     });
 

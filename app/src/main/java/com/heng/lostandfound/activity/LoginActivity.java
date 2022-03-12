@@ -20,6 +20,8 @@ import com.heng.lostandfound.utils.StringUtils;
 import java.util.HashMap;
 
 /**
+ * @author : HengZhang
+ * @date : 2022/3/6 14:49
  * 登陆界面
  */
 
@@ -96,7 +98,7 @@ public class LoginActivity extends BaseActivity {
                             Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             //todo: 添加用户数据
-                            intent.putExtra("userAccount",account);
+                            intent.putExtra("userAccount", account);
                             startActivity(intent);
                             finish();
                         }

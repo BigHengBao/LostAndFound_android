@@ -1,5 +1,6 @@
 package com.heng.lostandfound.activity;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -7,6 +8,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.google.gson.Gson;
+import com.heng.lostandfound.MainActivity;
 import com.heng.lostandfound.R;
 import com.heng.lostandfound.api.Api;
 import com.heng.lostandfound.api.ApiCallback;
@@ -110,6 +112,8 @@ public class RegisterActivity extends BaseActivity {
                         @Override
                         public void run() {
                             showToast("注册成功!");
+                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                            finish();
                         }
                     });
 

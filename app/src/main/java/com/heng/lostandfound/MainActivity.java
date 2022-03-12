@@ -10,7 +10,7 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.heng.lostandfound.activity.BaseActivity;
-import com.heng.lostandfound.adapter.MyPagerAdapter;
+import com.heng.lostandfound.adapter.MainPagerAdapter;
 import com.heng.lostandfound.entity.TabEntity;
 import com.heng.lostandfound.fragment.HomeFragment;
 import com.heng.lostandfound.fragment.MeFragment;
@@ -90,7 +90,7 @@ public class MainActivity extends BaseActivity {
 
             }
         });
-        viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), mTitles, mFragments));
+        viewPager.setAdapter(new MainPagerAdapter(getSupportFragmentManager(), mTitles, mFragments));
     }
 
 

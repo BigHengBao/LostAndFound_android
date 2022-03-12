@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * @author : HengZhang
  * @date : 2022/3/6 10:42
+ * activity的基类
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
