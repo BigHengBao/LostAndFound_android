@@ -2,12 +2,14 @@ package com.heng.lostandfound.entity;
 
 import android.graphics.Bitmap;
 
+import java.io.Serializable;
+
 /**
  * @author : HengZhang
  * @date : 2022/3/10 11:11
  */
 
-public class HomeGVItem {
+public class HomeGVItem implements Serializable {
     private String itemName;
     Bitmap ItemImg;
     private String userName;

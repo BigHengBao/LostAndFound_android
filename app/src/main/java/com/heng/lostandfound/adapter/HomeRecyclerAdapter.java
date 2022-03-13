@@ -1,16 +1,23 @@
 package com.heng.lostandfound.adapter;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
+import static java.security.AccessController.getContext;
+
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.heng.lostandfound.R;
+import com.heng.lostandfound.activity.GoodsInfoActivity;
 import com.heng.lostandfound.entity.RecyclerItem;
 import com.heng.lostandfound.utils.Constant;
 
@@ -51,9 +58,9 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         holder.timeTv.setText(mList.get(position).getOrderTime());
         holder.goodsTypeTv.setText(mList.get(position).getGoodsType());
         holder.recyclerImage.setImageResource(R.mipmap.books);
-        if (mList.get(position).getOrderType()== Constant.ORDER_TYPE_GET){
+        if (mList.get(position).getOrderType() == Constant.ORDER_TYPE_GET) {
             holder.orderTypeTv.setText("招领启事");
-        }else{
+        } else {
             holder.orderTypeTv.setText("寻物启事");
         }
     }
@@ -64,7 +71,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView goodNameTv, orderTypeTv, authorNameTv, timeTv,goodsTypeTv;
+        TextView goodNameTv, orderTypeTv, authorNameTv, timeTv, goodsTypeTv;
         ImageView recyclerImage;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -75,6 +82,19 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
             timeTv = itemView.findViewById(R.id.order_time);
             goodsTypeTv = itemView.findViewById(R.id.goods_type);
             recyclerImage = itemView.findViewById(R.id.home_recycler_item_image);
+
+            //todo：设置recycler的点击监听事件
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                    Toast.makeText(itemView.getContext(), goodNameTv.getText().toString(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(itemView.getContext(), GoodsInfoActivity.class);
+                    intent.putExtra("goodsName", goodNameTv.getText().toString());
+                    intent.putExtra("authorName", authorNameTv.getText().toString());
+                    itemView.getContext().startActivity(intent);
+
+                }
+            });
         }
     }
 }

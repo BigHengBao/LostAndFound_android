@@ -9,7 +9,7 @@ import com.heng.lostandfound.activity.AllUseActivity;
 import com.heng.lostandfound.activity.CodeActivity;
 import com.heng.lostandfound.activity.PluginActivity;
 import com.heng.lostandfound.activity.SettingActivity;
-import com.heng.lostandfound.adapter.LvAdapter;
+import com.heng.lostandfound.adapter.MeLvAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,7 +91,7 @@ public class MeFragment extends BaseFragment {
         int[] images = {R.mipmap.me_code_image, R.mipmap.me_alluse_image,
                 R.mipmap.me_other_image, R.mipmap.me_setting_image};
 
-        LvAdapter lvAdapter = new LvAdapter(getContext(), mLvDatas, images);
-        meLv.setAdapter(lvAdapter);
+        MeLvAdapter meLvAdapter = new MeLvAdapter(getContext(), mLvDatas, images);
+        meLv.setAdapter(meLvAdapter);
     }
 }

@@ -52,7 +52,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void initView();
 
-    protected abstract void initData();
+    protected abstract void initData() ;
 
     public void showToast(String msg) {
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();

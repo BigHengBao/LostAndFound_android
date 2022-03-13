@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.heng.lostandfound.R;
-import com.heng.lostandfound.adapter.LvAdapter;
+import com.heng.lostandfound.adapter.MeLvAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +75,7 @@ public class AllUseActivity extends BaseActivity {
 
         int[] images = {R.mipmap.helper_image, R.mipmap.about_image, R.mipmap.exchangebg};
 
-        LvAdapter lvAdapter = new LvAdapter(this, mLvDatas, images);
-        allUseLv.setAdapter(lvAdapter);
+        MeLvAdapter meLvAdapter = new MeLvAdapter(this, mLvDatas, images);
+        allUseLv.setAdapter(meLvAdapter);
     }
 }

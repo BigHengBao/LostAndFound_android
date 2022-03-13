@@ -1,11 +1,13 @@
 package com.heng.lostandfound.entity;
 
+import java.io.Serializable;
+
 /**
  * @author : HengZhang
  * @date : 2022/3/5 10:44
  */
 
-public class MyResponse {
+public class MyResponse implements Serializable {
     private String requestId;
     private boolean result;
     private String msg;
@@ -42,7 +44,7 @@ public class MyResponse {
 
     @Override
     public String toString() {
-        return "LoginResponse{" +
+        return "MyResponse{" +
                 "requestId='" + requestId + '\'' +
                 ", result=" + result +
                 ", msg='" + msg + '\'' +

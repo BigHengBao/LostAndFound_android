@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LostAndFound">
         <activity
+            android:name=".activity.GoodsInfoActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.PluginActivity"
             android:exported="true" />
         <activity

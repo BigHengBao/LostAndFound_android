@@ -1,6 +1,7 @@
 package com.heng.lostandfound.entity;
 
 import java.io.File;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -9,17 +10,17 @@ import java.sql.Timestamp;
  * title:物品实体类
  */
 
-public class Goods {
+public class Goods implements Serializable {
     private String gName;
     private String type;
     private String uAccount;
     private String getTime;
     private String loseTime;
     private String content;
-    private File gImage;
+    private String gImage;
     private String address;
 
-    public Goods(String gName, String type, String uAccount, String getTime, String loseTime, String content, File gImage, String address) {
+    public Goods(String gName, String type, String uAccount, String getTime, String loseTime, String content, String gImage, String address) {
         this.gName = gName;
         this.type = type;
         this.uAccount = uAccount;
@@ -81,11 +82,11 @@ public class Goods {
         this.content = content;
     }
 
-    public File getgImage() {
+    public String getgImage() {
         return gImage;
     }
 
-    public void setgImage(File gImage) {
+    public void setgImage(String gImage) {
         this.gImage = gImage;
     }
 

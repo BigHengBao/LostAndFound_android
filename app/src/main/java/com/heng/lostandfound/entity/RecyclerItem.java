@@ -2,13 +2,15 @@ package com.heng.lostandfound.entity;
 
 import android.graphics.Bitmap;
 
+import java.io.Serializable;
+
 /**
  * @author : HengZhang
  * @date : 2022/3/10 13:24
  * title:home界面的recycler的item
  */
 
-public class RecyclerItem {
+public class RecyclerItem implements Serializable {
     private String goodsName;
     private Integer orderType;
     private String authorName;

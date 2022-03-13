@@ -18,12 +18,12 @@ import java.util.List;
  * me页面listview的适配器
  */
 
-public class LvAdapter extends BaseAdapter {
+public class MeLvAdapter extends BaseAdapter {
     Context context;
     List<String> mDatas;
     int[] imgIds;
 
-    public LvAdapter(Context context, List<String> mDatas, int[] imgIds) {
+    public MeLvAdapter(Context context, List<String> mDatas, int[] imgIds) {
         this.context = context;
         this.mDatas = mDatas;
         this.imgIds = imgIds;
