@@ -14,4 +14,6 @@ public class ApiConfig {
     public static final String ADD_ORDER = "/order/addOrder"; //获得所有的order
     public static final String GET_ALL_GOODS_TYPE = "/order/getAllGoodsType"; //获得所有的goodsType
     public static final String GET_GOODS_INFO = "/goods/getGoodsInfo"; //获得所有的goodsInfo
+    public static final String GET_GOODS_COMMENTS = "/comment/getCommentListById"; //获得所有的goodsInfo
+    public static final String ADD_GOODS_COMMENT = "/comment/addComment"; //新增一条评论
 }

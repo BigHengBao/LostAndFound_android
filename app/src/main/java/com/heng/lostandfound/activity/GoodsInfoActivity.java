@@ -1,7 +1,6 @@
 package com.heng.lostandfound.activity;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,10 +18,10 @@ import com.heng.lostandfound.adapter.GoodsInfoVPAdapter;
 import com.heng.lostandfound.api.Api;
 import com.heng.lostandfound.api.ApiCallback;
 import com.heng.lostandfound.api.ApiConfig;
+import com.heng.lostandfound.entity.CommentItem;
 import com.heng.lostandfound.entity.GoodsInfoItem;
 import com.heng.lostandfound.entity.MyResponse;
-import com.heng.lostandfound.entity.RecyclerItem;
-import com.heng.lostandfound.fragment.GoodsComment;
+import com.heng.lostandfound.fragment.GoodsCommentFragment;
 import com.heng.lostandfound.fragment.GoodsIntroductionFragment;
 
 import java.util.ArrayList;
@@ -43,7 +42,7 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
     GoodsInfoVPAdapter adapter;
     String goodsName, authorName;
     GoodsIntroductionFragment introductionFrag;
-    GoodsComment commentsFrag;
+    GoodsCommentFragment commentsFrag;
     GoodsInfoItem goodsInfoItem;
 
     @Override
@@ -68,14 +67,68 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
         authorName = (String) getIntent().getSerializableExtra("authorName");
 
         getGoodsInfo(goodsName, authorName);
-
         setVPSelectListener();
         backIv.setOnClickListener(this);
         introductionBtn.setOnClickListener(this);
         commentsBtn.setOnClickListener(this);
 
-
         initFrag();
+
+        setGoodsComments();
+    }
+
+    //获取服务带你对应物品的信息
+    private void setGoodsComments() {
+        try {
+            Thread.sleep(100);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("front", "android");
+        params.put("requestId", "getCommentListById");
+        params.put("goodsName", goodsName);
+        params.put("authorName", authorName);
+
+        Api.config(ApiConfig.GET_GOODS_COMMENTS, params).postRequest(this, new ApiCallback() {
+            @SuppressLint("LongLogTag")
+            @Override
+            public void onSuccess(final String res) {
+//                Log.e("getGoodsInfo onSuccess", res);
+                Gson gson = new Gson();
+                MyResponse myResponse = gson.fromJson(res, MyResponse.class);
+                if (myResponse.isResult()) {
+                    List<CommentItem> commentItems = gson.fromJson(myResponse.getMsg(), new TypeToken<List<CommentItem>>() {
+                    }.getType());
+                    Log.e("", "getCommentListById:  " + commentItems);
+
+//                    //todo: 加载数据到内存里
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("goodsInfoItem", goodsInfoItem);
+//                    getIntent().putExtras(bundle);
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+//                            Toast.makeText(getActivity(), "数据更新成功", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                } else {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(GoodsInfoActivity.this, "数据更新失败", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+
+            }
+        });
     }
 
     // 获取服务端的指定goodsInfo
@@ -96,7 +149,7 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
                 if (myResponse.isResult()) {
                     Log.e("", "myResponse onSuccess: " + myResponse);
                     goodsInfoItem = gson.fromJson(myResponse.getMsg(), GoodsInfoItem.class);
-                    Log.e("", "goodsInfoItem: " + goodsInfoItem);
+//                    Log.e("", "goodsInfoItem: " + goodsInfoItem);
 
                     //todo: 加载数据到内存里
                     Bundle bundle = new Bundle();
@@ -144,7 +197,7 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
 
         //添加对象
         introductionFrag = GoodsIntroductionFragment.newInstance();
-        commentsFrag = GoodsComment.newInstance();
+        commentsFrag = GoodsCommentFragment.newInstance();
 
         VPList.add(introductionFrag);
         VPList.add(commentsFrag);

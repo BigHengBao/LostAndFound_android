@@ -11,14 +11,17 @@ public class Comment {
     private String content;
     private String addTime;
     private Integer active;
+    private String authorName;
 
-    public Comment(String gName, String uAccount, String content, String addTime, Integer active) {
+    public Comment(String gName, String uAccount, String content, String addTime, Integer active, String authorName) {
         this.gName = gName;
         this.uAccount = uAccount;
         this.content = content;
         this.addTime = addTime;
         this.active = active;
+        this.authorName = authorName;
     }
+
 
     public Comment() {
     }
@@ -63,14 +66,23 @@ public class Comment {
         this.active = active;
     }
 
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
     @Override
     public String toString() {
         return "Comment{" +
                 "gName='" + gName + '\'' +
                 ", uAccount='" + uAccount + '\'' +
                 ", content='" + content + '\'' +
-                ", addTime=" + addTime +
+                ", addTime='" + addTime + '\'' +
                 ", active=" + active +
+                ", authorName='" + authorName + '\'' +
                 '}';
     }
 }

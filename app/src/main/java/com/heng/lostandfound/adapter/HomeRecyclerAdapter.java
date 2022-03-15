@@ -1,11 +1,14 @@
 package com.heng.lostandfound.adapter;
 
+import static android.content.Intent.getIntent;
 import static androidx.core.content.ContextCompat.startActivity;
 
 import static java.security.AccessController.getContext;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,8 +94,9 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
                     Intent intent = new Intent(itemView.getContext(), GoodsInfoActivity.class);
                     intent.putExtra("goodsName", goodNameTv.getText().toString());
                     intent.putExtra("authorName", authorNameTv.getText().toString());
+                    intent.putExtra("userAccount", intent.getSerializableExtra("userAccount"));
+                    Log.e("TAG", "HomeRecyclerAdapter " + intent.getSerializableExtra("userAccount").toString());
                     itemView.getContext().startActivity(intent);
-
                 }
             });
         }

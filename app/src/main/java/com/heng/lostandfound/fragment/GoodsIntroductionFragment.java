@@ -91,7 +91,7 @@ public class GoodsIntroductionFragment extends BaseFragment {
         goodsInfoItem = (GoodsInfoItem) goodsInfoBundle.getSerializable("goodsInfoItem");
         setGoodsInfos();
 
-        Log.e("TAG", "GoodsIntroduct: " + goodsInfoItem);
+//        Log.e("TAG", "GoodsIntroduct: " + goodsInfoItem);
 
     }
 }

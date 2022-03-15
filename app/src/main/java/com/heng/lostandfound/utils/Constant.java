@@ -6,7 +6,7 @@ package com.heng.lostandfound.utils;
  * date: 2022/3/6/15:06
  * title：常量
  */
-public  class Constant {
+public class Constant {
     //前端类型
     public static final String FRONT_ANDROID = "android";
     public static final String FRONT_PC = "pc";
@@ -31,4 +31,7 @@ public  class Constant {
     public static final Integer ORDER_TYPE_LOOKING = 0;
     public static final Integer ORDER_TYPE_GET = 1;
 
+    //评论类型
+    public static final Integer COMMENT_ACTIVE_TRUE = 1;
+    public static final Integer COMMENT_ACTIVE_FALSE = 0;
 }

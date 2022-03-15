@@ -19,14 +19,23 @@
             android:id="@+id/ed_new_comment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="10" />
+            android:layout_weight="10"
+            android:hint="发表你的看法叭！"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <android.widget.Button
             android:id="@+id/btn_comment_submit"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:background="@drawable/operation_bg" />
+            android:background="@drawable/operation_bg"
+            android:text="发表"
+            android:textColor="@color/black" />
 
         <View
             android:layout_width="0dp"
