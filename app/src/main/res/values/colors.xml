@@ -13,4 +13,5 @@
 
     <color name="bg_yellow">#eee9bf</color>
     <color name="main_blue">#99CCFF</color>
+    <color name="hint_black">#55000000</color>
 </resources>

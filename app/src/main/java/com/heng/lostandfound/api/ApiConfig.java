@@ -7,7 +7,7 @@ package com.heng.lostandfound.api;
  */
 
 public class ApiConfig {
-    public static final String BASE_URl = "http://192.168.1.151:8080/app";
+    public static final String BASE_URl = "http://192.168.1.103:8080/app";
     public static final String LOGIN = "/user/login"; //登录
     public static final String REGISTER = "/user/register"; //注册
     public static final String GET_ALL_ORDER = "/order/getOrderList"; //获得所有的order
@@ -16,4 +16,6 @@ public class ApiConfig {
     public static final String GET_GOODS_INFO = "/goods/getGoodsInfo"; //获得所有的goodsInfo
     public static final String GET_GOODS_COMMENTS = "/comment/getCommentListById"; //获得所有的goodsInfo
     public static final String ADD_GOODS_COMMENT = "/comment/addComment"; //新增一条评论
+    public static final String ADD_COLLECTION = "/collection/addCollection"; //新增收藏
+    public static final String GET_COLLECTIONS = "/collection/getCollectionListById"; //查询收藏
 }

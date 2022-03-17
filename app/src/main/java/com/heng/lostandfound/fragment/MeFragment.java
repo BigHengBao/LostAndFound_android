@@ -2,11 +2,13 @@ package com.heng.lostandfound.fragment;
 
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.heng.lostandfound.R;
 import com.heng.lostandfound.activity.AllUseActivity;
 import com.heng.lostandfound.activity.CodeActivity;
+import com.heng.lostandfound.activity.CollectionActivity;
 import com.heng.lostandfound.activity.PluginActivity;
 import com.heng.lostandfound.activity.SettingActivity;
 import com.heng.lostandfound.adapter.MeLvAdapter;
@@ -26,6 +28,7 @@ public class MeFragment extends BaseFragment {
     CircleImageView iconIv;
     ListView meLv;
     List<String> mLvDatas = new ArrayList<>();
+    LinearLayout collection;
 
     public MeFragment() {
     }
@@ -43,6 +46,7 @@ public class MeFragment extends BaseFragment {
     @Override
     protected void initView() {
         meLv = mRootView.findViewById(R.id.lv_me);
+        collection = mRootView.findViewById(R.id.collection);
     }
 
     @Override
@@ -52,6 +56,12 @@ public class MeFragment extends BaseFragment {
         addDataToList();
         //todo: listview设置触发事件
         setLvListener();
+        collection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(CollectionActivity.class);
+            }
+        });
     }
 
     private void setLvListener() {

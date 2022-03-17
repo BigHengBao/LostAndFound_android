@@ -12,11 +12,11 @@ import java.sql.Timestamp;
 public class UserCollection implements Serializable {
     private String gName;  //物品名称
     private String uid;  //用户账号
-    private Timestamp addTime;
+    private String addTime;
     private Integer active;
     private String gUser;    //发启事的账号
 
-    public UserCollection(String gName, String uid, Timestamp addTime, Integer active, String gUser) {
+    public UserCollection(String gName, String uid, String addTime, Integer active, String gUser) {
         this.gName = gName;
         this.uid = uid;
         this.addTime = addTime;
@@ -43,11 +43,11 @@ public class UserCollection implements Serializable {
         this.uid = uid;
     }
 
-    public Timestamp getAddTime() {
+    public String getAddTime() {
         return addTime;
     }
 
-    public void setAddTime(Timestamp addTime) {
+    public void setAddTime(String addTime) {
         this.addTime = addTime;
     }
 

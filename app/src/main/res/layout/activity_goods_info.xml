@@ -109,7 +109,22 @@
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4" />
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/btn_collection"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_weight="3"
+            android:background="@color/white_background_plus"
+            android:src="@mipmap/collection_image_false" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
@@ -120,10 +135,10 @@
         android:background="@color/white_background_plus"
         android:orientation="horizontal">
 
-<!--        <View-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1" />-->
+        <!--        <View-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_weight="1" />-->
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/goods_info_vp"
@@ -132,10 +147,10 @@
             android:layout_marginTop="10dp"
             android:layout_weight="20" />
 
-<!--        <View-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1" />-->
+        <!--        <View-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_weight="1" />-->
 
     </LinearLayout>
 

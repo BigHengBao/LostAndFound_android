@@ -23,7 +23,7 @@
             android:background="@drawable/comment_edit_bg"
             android:hint=" 发表你的看法叭！"
             android:textColor="@color/black"
-            android:textColorHint="@color/teal_700" />
+            android:textColorHint="@color/hint_black" />
 
         <View
             android:layout_width="0dp"

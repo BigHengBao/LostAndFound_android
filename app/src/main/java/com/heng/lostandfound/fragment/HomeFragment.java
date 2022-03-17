@@ -35,6 +35,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * @author : HengZhang
  * @date : 2022/3/6 17:12
@@ -48,6 +50,7 @@ public class HomeFragment extends BaseFragment {
     ViewPager homeVp;
     GridView defaultGv;
     LinearLayout pointLayout;
+    CircleImageView civ;
 
     private RecyclerView mRecyclerView;
     private HomeRecyclerAdapter mHomeAdapter;
@@ -83,6 +86,7 @@ public class HomeFragment extends BaseFragment {
         pointLayout = mRootView.findViewById(R.id.home_point);
         defaultGv = mRootView.findViewById(R.id.home_gv);
         mRecyclerView = mRootView.findViewById(R.id.home_recycler_view);
+        civ = mRootView.findViewById(R.id.iv_home_image);
     }
 
     @Override
@@ -103,6 +107,7 @@ public class HomeFragment extends BaseFragment {
         getAllOrder();
 
         initRecycler();
+        civ.setImageResource(R.mipmap.man);
     }
 
     //装配所有的启事信息

@@ -1,6 +1,8 @@
 package com.heng.lostandfound.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,18 +14,19 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.heng.lostandfound.R;
 import com.heng.lostandfound.adapter.GoodsInfoVPAdapter;
 import com.heng.lostandfound.api.Api;
 import com.heng.lostandfound.api.ApiCallback;
 import com.heng.lostandfound.api.ApiConfig;
-import com.heng.lostandfound.entity.CommentItem;
 import com.heng.lostandfound.entity.GoodsInfoItem;
 import com.heng.lostandfound.entity.MyResponse;
+import com.heng.lostandfound.entity.UserCollection;
 import com.heng.lostandfound.fragment.GoodsCommentFragment;
 import com.heng.lostandfound.fragment.GoodsIntroductionFragment;
+import com.heng.lostandfound.utils.Constant;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +38,7 @@ import java.util.List;
  */
 public class GoodsInfoActivity extends BaseActivity implements View.OnClickListener {
 
-    ImageView goodsImg, backIv;
+    ImageView goodsImg, backIv, collectionIv;
     Button introductionBtn, commentsBtn;
     ViewPager goodsInfoVp;
     List<Fragment> VPList;
@@ -44,6 +47,7 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
     GoodsIntroductionFragment introductionFrag;
     GoodsCommentFragment commentsFrag;
     GoodsInfoItem goodsInfoItem;
+    boolean updateCollectionFrag = false;
 
     @Override
     protected int initLayout() {
@@ -57,11 +61,11 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
         commentsBtn = findViewById(R.id.goods_comment);
         goodsInfoVp = findViewById(R.id.goods_info_vp);
         backIv = findViewById(R.id.image_goodsinfo_back);
+        collectionIv = findViewById(R.id.btn_collection);
     }
 
     @Override
     protected void initData() {
-
         //todo: 获取数据
         goodsName = (String) getIntent().getSerializableExtra("goodsName");
         authorName = (String) getIntent().getSerializableExtra("authorName");
@@ -75,6 +79,68 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
         initFrag();
 
         setGoodsComments();
+        updateCollection();
+    }
+
+    //收藏
+    private void updateCollection() {
+        Gson gson = new Gson();
+        UserCollection userCollection = new UserCollection();
+        userCollection.setgName(goodsName);
+        userCollection.setgUser(authorName);
+        userCollection.setUid(getSharedPreferences("data", Context.MODE_PRIVATE).getString("username", ""));
+        userCollection.setAddTime(new Timestamp(System.currentTimeMillis()).toString());
+        collectionIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (updateCollectionFrag) {
+                    userCollection.setActive(Constant.COLLECTION_ACTIVE_FALSE);
+                    collectionIv.setBackgroundColor(Color.parseColor("#bbFFFFFF"));
+                    collectionIv.setImageResource(R.mipmap.collection_image_false);
+                    updateCollectionFrag = false;
+                } else {
+                    userCollection.setActive(Constant.COLLECTION_ACTIVE_TRUE);
+                    collectionIv.setBackgroundColor(Color.parseColor("#99CCFF"));
+                    collectionIv.setImageResource(R.mipmap.collection_image_true);
+                    updateCollectionFrag = true;
+                }
+                HashMap<String, Object> params = new HashMap<String, Object>();
+                params.put("front", "android");
+                params.put("requestId", "addCollection");
+                params.put("collection", gson.toJson(userCollection));
+
+                Api.config(ApiConfig.ADD_COLLECTION, params).postRequest(GoodsInfoActivity.this, new ApiCallback() {
+                    @SuppressLint("LongLogTag")
+                    @Override
+                    public void onSuccess(final String res) {
+                        Log.e("addCollection onSuccess", res);
+                        MyResponse myResponse = gson.fromJson(res, MyResponse.class);
+                        if (myResponse.isResult()) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(GoodsInfoActivity.this, "收藏成功", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                        } else {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(GoodsInfoActivity.this, "收藏失败", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+
+                    }
+                });
+
+            }
+        });
     }
 
     //获取服务带你对应物品的信息
