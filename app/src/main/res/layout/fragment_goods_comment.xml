@@ -20,8 +20,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="10"
-            android:hint="发表你的看法叭！"
-            android:textColor="@color/black" />
+            android:background="@drawable/comment_edit_bg"
+            android:hint=" 发表你的看法叭！"
+            android:textColor="@color/black"
+            android:textColorHint="@color/teal_700" />
 
         <View
             android:layout_width="0dp"
@@ -47,12 +49,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+        <!--        <View-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_weight="1" />-->
 
         <ListView
             android:id="@+id/lv_comment"
@@ -60,10 +63,10 @@
             android:layout_height="match_parent"
             android:layout_weight="15" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+        <!--        <View-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_weight="1" />-->
 
     </LinearLayout>
 

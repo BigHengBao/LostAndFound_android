@@ -1,12 +1,14 @@
 package com.heng.lostandfound.entity;
 
+import java.io.Serializable;
+
 /**
  * Editor: hengBao
  * Wechat：zh17530588817
  * date: 2022/3/15/19:57
  * title：评论的封装类
  */
-public class CommentItem {
+public class CommentItem implements Serializable {
     private String username;
     private String content;
     private String addTime;

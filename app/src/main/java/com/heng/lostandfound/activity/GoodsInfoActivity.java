@@ -98,14 +98,14 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
                 Gson gson = new Gson();
                 MyResponse myResponse = gson.fromJson(res, MyResponse.class);
                 if (myResponse.isResult()) {
-                    List<CommentItem> commentItems = gson.fromJson(myResponse.getMsg(), new TypeToken<List<CommentItem>>() {
-                    }.getType());
-                    Log.e("", "getCommentListById:  " + commentItems);
+//                    List<CommentItem> commentItems = gson.fromJson(myResponse.getMsg(), new TypeToken<List<CommentItem>>() {
+//                    }.getType());
+//                    Log.e("", "getCommentListById:  " + commentItems);
 
 //                    //todo: 加载数据到内存里
-//                    Bundle bundle = new Bundle();
-//                    bundle.putSerializable("goodsInfoItem", goodsInfoItem);
-//                    getIntent().putExtras(bundle);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("commentListStr", myResponse.getMsg());
+                    getIntent().putExtras(bundle);
 
                     runOnUiThread(new Runnable() {
                         @Override

@@ -1,6 +1,9 @@
 package com.heng.lostandfound.activity;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -95,6 +98,15 @@ public class LoginActivity extends BaseActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            //共享存储用户名
+                            SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
+                            @SuppressLint("CommitPrefEdits")
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.clear();
+                            editor.apply();
+                            editor.putString("username", account);
+                            editor.apply();
+
                             Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             //todo: 添加用户数据

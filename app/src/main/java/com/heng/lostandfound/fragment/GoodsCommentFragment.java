@@ -1,5 +1,7 @@
 package com.heng.lostandfound.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,7 +10,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.heng.lostandfound.R;
+import com.heng.lostandfound.adapter.CommentsLvAdapter;
 import com.heng.lostandfound.api.Api;
 import com.heng.lostandfound.api.ApiCallback;
 import com.heng.lostandfound.api.ApiConfig;
@@ -20,7 +24,9 @@ import com.heng.lostandfound.utils.Constant;
 import com.heng.lostandfound.utils.StringUtils;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author : HengZhang
@@ -34,6 +40,8 @@ public class GoodsCommentFragment extends BaseFragment {
     ListView commentLv;
     GoodsInfoItem goodsInfoItem = null;
     String userAccount;
+
+    List<CommentItem> commentItems = new ArrayList<>();
 
     public GoodsCommentFragment() {
     }
@@ -57,8 +65,10 @@ public class GoodsCommentFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        userAccount = (String) getActivity().getIntent().getSerializableExtra("userAccount");
-        Log.e("TAG", "GoodsCommentFragment: " + userAccount);
+        setComments();
+
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
+        userAccount = sharedPreferences.getString("username", "");
         submitBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -119,7 +129,6 @@ public class GoodsCommentFragment extends BaseFragment {
                             showToast("启事提交失败");
                         }
                     });
-
                 }
             }
 
@@ -130,4 +139,19 @@ public class GoodsCommentFragment extends BaseFragment {
         });
     }
 
+    //显示所有评论
+    private void setComments() {
+        try {
+            Thread.sleep(150);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Bundle commentsBundle = getActivity().getIntent().getExtras();
+        String commentListStr = (String) commentsBundle.getSerializable("commentListStr");
+        List<CommentItem> commentItems = new Gson().fromJson(commentListStr, new TypeToken<List<CommentItem>>() {
+        }.getType());
+
+        CommentsLvAdapter commentsLvAdapter = new CommentsLvAdapter(getContext(), commentItems);
+        commentLv.setAdapter(commentsLvAdapter);
+    }
 }

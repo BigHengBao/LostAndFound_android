@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:background="@color/teal_200"
         android:orientation="horizontal">
 
@@ -15,11 +16,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <ImageView
-            android:id="@+id/iv_commment"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_user_comment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3" />
+            android:layout_weight="3"
+            app:civ_border_width="1dp" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -28,7 +30,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/comment_username"
+                android:id="@+id/tv_comment_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
@@ -37,16 +39,16 @@
                 android:textSize="10sp" />
 
             <TextView
-                android:id="@+id/comment_content"
+                android:id="@+id/tv_comment_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:text="内容"
                 android:textColor="@color/black"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/comment_time"
+                android:id="@+id/tv_comment_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"

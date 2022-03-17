@@ -94,8 +94,6 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
                     Intent intent = new Intent(itemView.getContext(), GoodsInfoActivity.class);
                     intent.putExtra("goodsName", goodNameTv.getText().toString());
                     intent.putExtra("authorName", authorNameTv.getText().toString());
-                    intent.putExtra("userAccount", intent.getSerializableExtra("userAccount"));
-                    Log.e("TAG", "HomeRecyclerAdapter " + intent.getSerializableExtra("userAccount").toString());
                     itemView.getContext().startActivity(intent);
                 }
             });
