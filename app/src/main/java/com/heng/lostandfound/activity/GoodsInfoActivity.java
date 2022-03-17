@@ -87,9 +87,14 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
         Gson gson = new Gson();
         UserCollection userCollection = new UserCollection();
         userCollection.setgName(goodsName);
-        userCollection.setgUser(authorName);
-        userCollection.setUid(getSharedPreferences("data", Context.MODE_PRIVATE).getString("username", ""));
+        userCollection.setgAuthorName(authorName);
+        userCollection.setuAccount(getSharedPreferences("data", Context.MODE_PRIVATE).getString("username", ""));
         userCollection.setAddTime(new Timestamp(System.currentTimeMillis()).toString());
+
+        //请求参数
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("front", "android");
+
         collectionIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,28 +103,29 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
                     collectionIv.setBackgroundColor(Color.parseColor("#bbFFFFFF"));
                     collectionIv.setImageResource(R.mipmap.collection_image_false);
                     updateCollectionFrag = false;
+                    params.put("requestId", "updateCollection");
                 } else {
                     userCollection.setActive(Constant.COLLECTION_ACTIVE_TRUE);
                     collectionIv.setBackgroundColor(Color.parseColor("#99CCFF"));
                     collectionIv.setImageResource(R.mipmap.collection_image_true);
                     updateCollectionFrag = true;
+                    params.put("requestId", "addCollection");
                 }
-                HashMap<String, Object> params = new HashMap<String, Object>();
-                params.put("front", "android");
-                params.put("requestId", "addCollection");
                 params.put("collection", gson.toJson(userCollection));
 
-                Api.config(ApiConfig.ADD_COLLECTION, params).postRequest(GoodsInfoActivity.this, new ApiCallback() {
+                Api.config(ApiConfig.OPERATE_COLLECTION, params).postRequest(GoodsInfoActivity.this, new ApiCallback() {
                     @SuppressLint("LongLogTag")
                     @Override
                     public void onSuccess(final String res) {
-                        Log.e("addCollection onSuccess", res);
+                        Log.e("Collection onSuccess", res);
                         MyResponse myResponse = gson.fromJson(res, MyResponse.class);
+                        Log.e("collection", myResponse.getRequestId() + myResponse.isResult() + "");
                         if (myResponse.isResult()) {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(GoodsInfoActivity.this, "收藏成功", Toast.LENGTH_SHORT).show();
+
+                                    Toast.makeText(GoodsInfoActivity.this, "成功", Toast.LENGTH_SHORT).show();
                                 }
                             });
 
@@ -127,7 +133,7 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(GoodsInfoActivity.this, "收藏失败", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(GoodsInfoActivity.this, "失败", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
