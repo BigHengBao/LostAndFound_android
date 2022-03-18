@@ -17,7 +17,6 @@ import com.heng.lostandfound.api.Api;
 import com.heng.lostandfound.api.ApiCallback;
 import com.heng.lostandfound.api.ApiConfig;
 import com.heng.lostandfound.entity.MyResponse;
-import com.heng.lostandfound.entity.User;
 import com.heng.lostandfound.utils.StringUtils;
 
 import java.util.HashMap;
@@ -87,7 +86,7 @@ public class LoginActivity extends BaseActivity {
         params.put("password", pwd);
 
 
-        Api.config(ApiConfig.LOGIN, params).postRequest(this, new ApiCallback() {
+        Api.config(ApiConfig.USER_LOGIN, params).postRequest(this, new ApiCallback() {
             @Override
             public void onSuccess(final String res) {
                 Log.e("LoginActivity onSuccess", res);

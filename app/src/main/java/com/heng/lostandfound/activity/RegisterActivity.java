@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.google.gson.Gson;
-import com.heng.lostandfound.MainActivity;
 import com.heng.lostandfound.R;
 import com.heng.lostandfound.api.Api;
 import com.heng.lostandfound.api.ApiCallback;
@@ -73,7 +72,7 @@ public class RegisterActivity extends BaseActivity {
                         showToast("两次输入密码不同！！");
                     }
                     User user = new User();
-                    user.setUid(account);
+                    user.setuAccount(account);
                     user.setuPwd(password);
                     user.setrName(rName);
                     user.setuSex(sex);
@@ -101,7 +100,7 @@ public class RegisterActivity extends BaseActivity {
         params.put("user", gson.toJson(user));
 
         System.out.println("register:" + params.toString());
-        Api.config(ApiConfig.REGISTER, params).postRequest(this, new ApiCallback() {
+        Api.config(ApiConfig.USER_REGISTER, params).postRequest(this, new ApiCallback() {
             @Override
             public void onSuccess(final String res) {
                 Log.e("Register onSuccess", res);

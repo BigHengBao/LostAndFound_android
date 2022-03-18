@@ -9,7 +9,7 @@ import java.io.Serializable;
  * title： 用户实体类
  */
 public class User implements Serializable {
-    private String uid;  //账号
+    private String uAccount;  //账号
     private  String uPwd;
     private String rName;
     private  Integer uSex;
@@ -23,8 +23,8 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String uid, String uPwd, String rName, Integer uSex, String uPhone, String uAddress, Integer active, Integer uLevel, String userImage, String uWrite) {
-        this.uid = uid;
+    public User(String uAccount, String uPwd, String rName, Integer uSex, String uPhone, String uAddress, Integer active, Integer uLevel, String userImage, String uWrite) {
+        this.uAccount = uAccount;
         this.uPwd = uPwd;
         this.rName = rName;
         this.uSex = uSex;
@@ -36,12 +36,12 @@ public class User implements Serializable {
         this.uWrite = uWrite;
     }
 
-    public String getUid() {
-        return uid;
+    public String getuAccount() {
+        return uAccount;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setuAccount(String uAccount) {
+        this.uAccount = uAccount;
     }
 
     public String getuPwd() {
@@ -119,7 +119,7 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "uid='" + uid + '\'' +
+                "uid='" + uAccount + '\'' +
                 ", uPwd='" + uPwd + '\'' +
                 ", rName='" + rName + '\'' +
                 ", uSex=" + uSex +

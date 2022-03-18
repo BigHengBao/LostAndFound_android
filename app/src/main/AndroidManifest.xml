@@ -17,6 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LostAndFound">
         <activity
+            android:name=".activity.UserNoticeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.UserInfoActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.CollectionActivity"
             android:exported="true" />
         <activity

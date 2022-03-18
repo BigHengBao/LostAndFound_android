@@ -11,6 +11,8 @@ import com.heng.lostandfound.activity.CodeActivity;
 import com.heng.lostandfound.activity.CollectionActivity;
 import com.heng.lostandfound.activity.PluginActivity;
 import com.heng.lostandfound.activity.SettingActivity;
+import com.heng.lostandfound.activity.UserInfoActivity;
+import com.heng.lostandfound.activity.UserNoticeActivity;
 import com.heng.lostandfound.adapter.MeLvAdapter;
 
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class MeFragment extends BaseFragment {
     CircleImageView iconIv;
     ListView meLv;
     List<String> mLvDatas = new ArrayList<>();
-    LinearLayout collection;
+    LinearLayout collection, userInfo, notice;
 
     public MeFragment() {
     }
@@ -47,6 +49,8 @@ public class MeFragment extends BaseFragment {
     protected void initView() {
         meLv = mRootView.findViewById(R.id.lv_me);
         collection = mRootView.findViewById(R.id.collection);
+        userInfo = mRootView.findViewById(R.id.user_Info);
+        notice = mRootView.findViewById(R.id.notice);
     }
 
     @Override
@@ -60,6 +64,20 @@ public class MeFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 navigateTo(CollectionActivity.class);
+            }
+        });
+
+        userInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(UserInfoActivity.class);
+            }
+        });
+
+        notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(UserNoticeActivity.class);
             }
         });
     }
