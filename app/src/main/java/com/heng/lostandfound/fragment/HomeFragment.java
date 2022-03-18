@@ -21,6 +21,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.heng.lostandfound.R;
+import com.heng.lostandfound.activity.TestImageActivity;
 import com.heng.lostandfound.adapter.HomeGVAdapter;
 import com.heng.lostandfound.adapter.HomePicVPAdapter;
 import com.heng.lostandfound.adapter.HomeRecyclerAdapter;
@@ -107,7 +108,12 @@ public class HomeFragment extends BaseFragment {
         getAllOrder();
 
         initRecycler();
-        civ.setImageResource(R.mipmap.man);
+        civ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(TestImageActivity.class);
+            }
+        });
     }
 
     //装配所有的启事信息
