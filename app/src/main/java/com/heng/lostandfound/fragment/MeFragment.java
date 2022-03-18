@@ -1,10 +1,16 @@
 package com.heng.lostandfound.fragment;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.heng.lostandfound.R;
 import com.heng.lostandfound.activity.AllUseActivity;
 import com.heng.lostandfound.activity.CodeActivity;
@@ -14,8 +20,14 @@ import com.heng.lostandfound.activity.SettingActivity;
 import com.heng.lostandfound.activity.UserInfoActivity;
 import com.heng.lostandfound.activity.UserNoticeActivity;
 import com.heng.lostandfound.adapter.MeLvAdapter;
+import com.heng.lostandfound.api.Api;
+import com.heng.lostandfound.api.ApiCallback;
+import com.heng.lostandfound.api.ApiConfig;
+import com.heng.lostandfound.entity.MyResponse;
+import com.heng.lostandfound.entity.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -27,8 +39,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 
 public class MeFragment extends BaseFragment {
+    User user;
     CircleImageView iconIv;
     ListView meLv;
+    TextView rNameTv, userWriteTv;
     List<String> mLvDatas = new ArrayList<>();
     LinearLayout collection, userInfo, notice;
 
@@ -47,14 +61,19 @@ public class MeFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        iconIv = mRootView.findViewById(R.id.meFrag_iv);
         meLv = mRootView.findViewById(R.id.lv_me);
         collection = mRootView.findViewById(R.id.collection);
         userInfo = mRootView.findViewById(R.id.user_Info);
         notice = mRootView.findViewById(R.id.notice);
+        rNameTv = mRootView.findViewById(R.id.tv_user_rname);
+        userWriteTv = mRootView.findViewById(R.id.tv_user_write);
     }
 
     @Override
     protected void initData() {
+
+        setSimpleInfo();
 
         // todo：listview装配数据
         addDataToList();
@@ -78,6 +97,35 @@ public class MeFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 navigateTo(UserNoticeActivity.class);
+            }
+        });
+    }
+
+    // todo：设置简易信息
+    private void setSimpleInfo() {
+        Gson gson = new Gson();
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("front", "android");
+        params.put("requestId", "getUserInfo");
+        params.put("userAccount", getContext().getSharedPreferences("data", Context.MODE_PRIVATE).getString("username", ""));
+
+        Api.config(ApiConfig.GET_USER_INFO, params).postRequest(getContext(), new ApiCallback() {
+
+
+            @SuppressLint("LongLogTag")
+            @Override
+            public void onSuccess(final String res) {
+                Log.e("getUserInfo onSuccess", res);
+                MyResponse myResponse = gson.fromJson(res, MyResponse.class);
+                Log.e("getUserInfo", myResponse.getRequestId() + myResponse.isResult() + "");
+                if (myResponse.isResult()) {
+                    user = gson.fromJson(myResponse.getMsg(), User.class);
+                }
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+
             }
         });
     }
@@ -107,6 +155,13 @@ public class MeFragment extends BaseFragment {
                 }
             }
         });
+        try {
+            Thread.sleep(100);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        rNameTv.setText(user.getrName());
+        userWriteTv.setText(user.getuWrite());
     }
 
 

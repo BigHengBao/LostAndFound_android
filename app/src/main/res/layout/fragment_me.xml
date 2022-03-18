@@ -34,16 +34,25 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:layout_marginLeft="20dp"
                     android:id="@+id/tv_user_rname"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:gravity="left"
                     android:text=""
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_user_write"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:textColor="@color/black" />
 
         </LinearLayout>
 

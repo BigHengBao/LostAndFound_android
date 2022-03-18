@@ -221,7 +221,7 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
                 if (myResponse.isResult()) {
                     Log.e("", "myResponse onSuccess: " + myResponse);
                     goodsInfoItem = gson.fromJson(myResponse.getMsg(), GoodsInfoItem.class);
-//                    Log.e("", "goodsInfoItem: " + goodsInfoItem);
+                    Log.e("", "goodsInfoItem: " + goodsInfoItem);
 
                     //todo: 加载数据到内存里
                     Bundle bundle = new Bundle();
