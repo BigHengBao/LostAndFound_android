@@ -122,53 +122,60 @@ public class HomeFragment extends BaseFragment {
         params.put("front", "android");
         params.put("requestId", "getAllOrder");
 
-        Api.config(ApiConfig.GET_ALL_ORDER, params).postRequest(getActivity(), new ApiCallback() {
-            @SuppressLint("LongLogTag")
+        new Thread(new Runnable() {
             @Override
-            public void onSuccess(final String res) {
-                Log.e("HomeFragment getAllOrder onSuccess", res);
-                Gson gson = new Gson();
-                MyResponse myResponse = gson.fromJson(res, MyResponse.class);
-                if (myResponse.isResult()) {
-                    Log.e("", "onSuccess: " + myResponse);
+            public void run() {
+                Api.config(ApiConfig.GET_ALL_ORDER, params).postRequest(getActivity(), new ApiCallback() {
+                    @SuppressLint("LongLogTag")
+                    @Override
+                    public void onSuccess(final String res) {
+                        Log.e("HomeFragment getAllOrder onSuccess", res);
+                        Gson gson = new Gson();
+                        MyResponse myResponse = gson.fromJson(res, MyResponse.class);
+                        if (myResponse.isResult()) {
+                            Log.e("", "onSuccess: " + myResponse);
 
-                    /**
-                     * 解析赋值
-                     * 把Json字符串 解析成List<RecyclerItem>
-                     * 相当于走了两部，json->list,list<object>-->list<RecyclerItem>
-                     */
+                            /**
+                             * 解析赋值
+                             * 把Json字符串 解析成List<RecyclerItem>
+                             * 相当于走了两部，json->list,list<object>-->list<RecyclerItem>
+                             */
 
-                    List<RecyclerItem> list = gson.fromJson(myResponse.getMsg(), new TypeToken<List<RecyclerItem>>() {
-                    }.getType());
-                    mList.clear();
-                    for (RecyclerItem recyclerItem : list) {
-                        if (!mList.contains(recyclerItem)) {
-                            mList.add(recyclerItem);
+                            List<RecyclerItem> list = gson.fromJson(myResponse.getMsg(), new TypeToken<List<RecyclerItem>>() {
+                            }.getType());
+                            mList.clear();
+                            for (RecyclerItem recyclerItem : list) {
+                                if (!mList.contains(recyclerItem)) {
+                                    mList.add(recyclerItem);
+                                }
+                            }
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+//                            Toast.makeText(getActivity(), "数据更新成功", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                        } else {
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getActivity(), "数据更新失败", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
                         }
                     }
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-//                            Toast.makeText(getActivity(), "数据更新成功", Toast.LENGTH_SHORT).show();
-                        }
-                    });
 
-                } else {
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getActivity(), "数据更新失败", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    @Override
+                    public void onFailure(Exception e) {
 
-                }
-            }
-
-            @Override
-            public void onFailure(Exception e) {
+                    }
+                });
 
             }
-        });
+        }).start();
+
     }
 
     //todo: 完成定时装置，实现自动滑动的效果
@@ -363,7 +370,7 @@ public class HomeFragment extends BaseFragment {
 //        mDatas.add(others);
 
         try {
-            Thread.sleep(100);
+            Thread.sleep(50);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -396,6 +403,11 @@ public class HomeFragment extends BaseFragment {
 //        mList.add(item3);
 //        mList.add(item4);
 
+        try {
+            Thread.sleep(50);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         // 设置 item 增加和删除时的动画
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mHomeAdapter = new HomeRecyclerAdapter(mList, getContext());

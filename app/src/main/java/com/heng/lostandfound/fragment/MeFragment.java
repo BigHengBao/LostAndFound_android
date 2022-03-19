@@ -158,7 +158,7 @@ public class MeFragment extends BaseFragment {
             }
         });
         try {
-            Thread.sleep(600);
+            Thread.sleep(500);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -167,7 +167,6 @@ public class MeFragment extends BaseFragment {
         iconIv.setImageBitmap(new StringUtils().stringToBitmap(user.getUserImage()));
 
     }
-
 
     private void addDataToList() {
         mLvDatas.add("二维码");

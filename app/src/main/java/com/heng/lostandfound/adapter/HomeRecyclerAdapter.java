@@ -23,6 +23,7 @@ import com.heng.lostandfound.R;
 import com.heng.lostandfound.activity.GoodsInfoActivity;
 import com.heng.lostandfound.entity.RecyclerItem;
 import com.heng.lostandfound.utils.Constant;
+import com.heng.lostandfound.utils.StringUtils;
 
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         holder.authorNameTv.setText(mList.get(position).getAuthorName());
         holder.timeTv.setText(mList.get(position).getOrderTime());
         holder.goodsTypeTv.setText(mList.get(position).getGoodsType());
-        holder.recyclerImage.setImageResource(R.mipmap.books);
+        holder.recyclerImage.setImageBitmap(new StringUtils().stringToBitmap(mList.get(position).getGoodsImage()));
         if (mList.get(position).getOrderType() == Constant.ORDER_TYPE_GET) {
             holder.orderTypeTv.setText("招领启事");
         } else {

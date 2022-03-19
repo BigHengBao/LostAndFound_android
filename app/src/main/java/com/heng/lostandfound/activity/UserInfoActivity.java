@@ -107,7 +107,7 @@ public class UserInfoActivity extends BaseActivity {
 
     private void setUserInfo() {
         try {
-            Thread.sleep(500);
+            Thread.sleep(300);
         } catch (Exception e) {
             e.printStackTrace();
         }

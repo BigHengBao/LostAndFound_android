@@ -16,9 +16,9 @@ public class RecyclerItem implements Serializable {
     private String authorName;
     private String goodsType;
     private String orderTime;
-    private Bitmap goodsImage;
+    private String goodsImage;
 
-    public RecyclerItem(String goodsName, Integer orderType, String authorName, String goodsType, String orderTime, Bitmap goodsImage) {
+    public RecyclerItem(String goodsName, Integer orderType, String authorName, String goodsType, String orderTime, String goodsImage) {
         this.goodsName = goodsName;
         this.orderType = orderType;
         this.authorName = authorName;
@@ -62,11 +62,11 @@ public class RecyclerItem implements Serializable {
         this.orderTime = orderTime;
     }
 
-    public Bitmap getGoodsImage() {
+    public String getGoodsImage() {
         return goodsImage;
     }
 
-    public void setGoodsImage(Bitmap goodsImage) {
+    public void setGoodsImage(String goodsImage) {
         this.goodsImage = goodsImage;
     }
 

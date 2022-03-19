@@ -65,7 +65,7 @@ public class UserNoticeActivity extends BaseActivity {
         getUserOrders();
 
         try {
-            Thread.sleep(100);
+            Thread.sleep(250);
         } catch (Exception e) {
             e.printStackTrace();
         }
