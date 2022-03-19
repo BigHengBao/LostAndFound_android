@@ -25,6 +25,7 @@ import com.heng.lostandfound.api.ApiCallback;
 import com.heng.lostandfound.api.ApiConfig;
 import com.heng.lostandfound.entity.MyResponse;
 import com.heng.lostandfound.entity.User;
+import com.heng.lostandfound.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -120,6 +121,7 @@ public class MeFragment extends BaseFragment {
                 Log.e("getUserInfo", myResponse.getRequestId() + myResponse.isResult() + "");
                 if (myResponse.isResult()) {
                     user = gson.fromJson(myResponse.getMsg(), User.class);
+                    Log.e("TAG", "MeFragment onSuccess: " + user);
                 }
             }
 
@@ -156,12 +158,14 @@ public class MeFragment extends BaseFragment {
             }
         });
         try {
-            Thread.sleep(100);
+            Thread.sleep(600);
         } catch (Exception e) {
             e.printStackTrace();
         }
         rNameTv.setText(user.getrName());
         userWriteTv.setText(user.getuWrite());
+        iconIv.setImageBitmap(new StringUtils().stringToBitmap(user.getUserImage()));
+
     }
 
 

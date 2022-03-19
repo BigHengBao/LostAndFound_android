@@ -269,12 +269,17 @@ public class HomeFragment extends BaseFragment {
                         //装配所有的启事信息
                         getAllOrder();
                         initRecycler();
-                        showToast("这是第" + position + "个");
+                        showToast("更新成功");
                         break;
                     case 1:
 //                        intent = new Intent(getContext(), CodePartyActivity.class);
 //                        startActivity(intent);
-                        showToast("这是第" + position + "个");
+//                        showToast("这是第" + position + "个");
+                        break;
+                    case 2:
+//                        intent = new Intent(getContext(), CodePartyActivity.class);
+//                        startActivity(intent);
+//                        showToast("这是第" + position + "个");
                         break;
 
                 }
@@ -356,6 +361,12 @@ public class HomeFragment extends BaseFragment {
 //        mDatas.add(foods);
 //        mDatas.add(house);
 //        mDatas.add(others);
+
+        try {
+            Thread.sleep(100);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         mDatas.add(waiting);
 
         //todo: 创建适配器对象

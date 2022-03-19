@@ -41,6 +41,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/teal_700"
                 app:civ_border_width="1dp" />
         </LinearLayout>
 
@@ -69,8 +70,8 @@
                 android:layout_height="40dp"
                 android:background="@drawable/shape_search_btn"
                 android:hint="请输入想要找的物品"
-                android:textColorHint="@color/hint_black"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textColorHint="@color/hint_black" />
         </LinearLayout>
 
         <LinearLayout

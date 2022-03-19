@@ -40,34 +40,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="3"
         android:background="@color/white_background_plus"
         android:orientation="horizontal">
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="3"
-            android:gravity="right"
-            android:text="头像："
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:id="@+id/iv_userinfo_image"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userinfo_iv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
-            android:layout_weight="3"
-            android:hint=" "
-            android:textColorHint="@color/hint_black"
-            android:textSize="25sp" />
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            app:civ_border_width="2dp" />
 
     </LinearLayout>
 
@@ -284,14 +268,14 @@
             android:layout_weight="3"
             android:background="@color/white"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:background="@color/white_background_plus" />
 
 

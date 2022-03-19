@@ -25,8 +25,8 @@ public class HomeGVAdapter extends BaseAdapter {
 
     List<ImageView> ivList;
 
-    int[] imgIds = {R.mipmap.zawu, R.mipmap.daixu, R.mipmap.electronic, R.mipmap.books, R.mipmap.financialdocs,
-            R.mipmap.foods, R.mipmap.house, R.mipmap.others};
+    int[] imgIds = {R.mipmap.zawu, R.mipmap.others, R.mipmap.electronic, R.mipmap.books, R.mipmap.financialdocs,
+            R.mipmap.foods, R.mipmap.house, R.mipmap.daixu};
 
     public HomeGVAdapter(Context context, List<HomeGVItem> mDatas, List<ImageView> ivList) {
         this.context = context;

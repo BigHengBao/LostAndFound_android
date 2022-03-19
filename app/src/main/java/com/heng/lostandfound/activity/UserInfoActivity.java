@@ -17,13 +17,17 @@ import com.heng.lostandfound.api.ApiConfig;
 import com.heng.lostandfound.entity.MyResponse;
 import com.heng.lostandfound.entity.User;
 import com.heng.lostandfound.utils.Constant;
+import com.heng.lostandfound.utils.StringUtils;
 
 import java.util.HashMap;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class UserInfoActivity extends BaseActivity {
-    ImageView backIv, userInfoTv;
+    ImageView backIv;
     TextView uAccountTv, rNameTv, uPhoneTv, addressTv, uWriteTv;
     RadioButton boyBtn, girlBtn;
+    CircleImageView userInfoIv;
     User user;
 
     @Override
@@ -34,7 +38,6 @@ public class UserInfoActivity extends BaseActivity {
     @Override
     protected void initView() {
         backIv = findViewById(R.id.image_userinfo_back);
-        userInfoTv = findViewById(R.id.iv_userinfo_image);
         uAccountTv = findViewById(R.id.tv_userinfo_account);
         rNameTv = findViewById(R.id.tv_userinfo_rname);
         uPhoneTv = findViewById(R.id.tv_userinfo_phone);
@@ -42,6 +45,7 @@ public class UserInfoActivity extends BaseActivity {
         uWriteTv = findViewById(R.id.tv_userinfo_write);
         boyBtn = findViewById(R.id.tv_userinfo_boy);
         girlBtn = findViewById(R.id.tv_userinfo_girl);
+        userInfoIv = findViewById(R.id.userinfo_iv);
     }
 
     @Override
@@ -103,7 +107,7 @@ public class UserInfoActivity extends BaseActivity {
 
     private void setUserInfo() {
         try {
-            Thread.sleep(100);
+            Thread.sleep(500);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -112,10 +116,12 @@ public class UserInfoActivity extends BaseActivity {
         uPhoneTv.setText(user.getuPhone());
         addressTv.setText(user.getuAddress());
         uWriteTv.setText(user.getuWrite());
-        if (user.getuSex() == Constant.USER_MAN){
+        userInfoIv.setImageBitmap(new StringUtils().stringToBitmap(user.getUserImage()));
+
+        if (user.getuSex() == Constant.USER_MAN) {
             boyBtn.setChecked(true);
             girlBtn.setChecked(false);
-        }else{
+        } else {
             girlBtn.setChecked(true);
             boyBtn.setChecked(false);
         }

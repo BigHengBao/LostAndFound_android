@@ -36,6 +36,15 @@
             android:layout_weight="1" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:gravity="right"
+        android:text="暂时仅支持.jpg 格式文件"
+        android:textColor="@color/black"
+        android:textSize="10sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -44,8 +44,8 @@ public class LoginActivity extends BaseActivity {
         toRegisterBtn = findViewById(R.id.btn_to_register);
 
         //todo: 方便测试，后期删除
-        accountEd.setText("20191112522");
-        pwdEd.setText("123456");
+        accountEd.setText("20191110000");
+        pwdEd.setText("123");
     }
 
     @Override

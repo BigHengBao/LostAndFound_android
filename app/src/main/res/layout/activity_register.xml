@@ -174,7 +174,7 @@
                 android:layout_weight="3"
                 android:hint=" "
                 android:textColorHint="@color/hint_black"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -255,7 +255,7 @@
                 android:layout_weight="3"
                 android:hint=" 少于200字"
                 android:textColorHint="@color/hint_black"
-                android:textSize="15sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -274,15 +274,14 @@
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/ed_register_image"
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_register_image"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:hint=" "
-                android:textColorHint="@color/hint_black"
-                android:textSize="25sp" />
+                app:civ_border_color="@color/hint_black"
+                app:civ_border_width="10dp" />
 
         </LinearLayout>
 

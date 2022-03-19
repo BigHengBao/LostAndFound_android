@@ -1,10 +1,12 @@
 package com.heng.lostandfound.activity;
 
 import androidx.core.app.ActivityCompat;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -13,8 +15,19 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
+
+import com.google.gson.Gson;
 import com.heng.lostandfound.R;
+import com.heng.lostandfound.api.Api;
+import com.heng.lostandfound.api.ApiCallback;
+import com.heng.lostandfound.api.ApiConfig;
+import com.heng.lostandfound.entity.MyResponse;
+
+import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -126,7 +139,95 @@ public class TestImageActivity extends BaseActivity {
     private void displayImage(String imagePath) {
         Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
         civ.setImageBitmap(bitmap);
+
+        String bitmapToStr = bitmapToString(bitmap);
+        Log.e("TAG", "displayImage: bitmapToString->>:" + bitmapToStr);
+        postImage(bitmapToStr);
+    }
+
+    /**
+     * 向服务端发送图片str
+     *
+     * @param bitmapToStr
+     */
+    private void postImage(String bitmapToStr) {
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("front", "android");
+        params.put("requestId", "postImage");
+        params.put("imageStr", bitmapToStr);
+        params.put("userAccount", getSharedPreferences("data", Context.MODE_PRIVATE).getString("username", ""));
+
+
+        Api.config(ApiConfig.TEST_IMAGE, params).postRequest(this, new ApiCallback() {
+            @Override
+            public void onSuccess(final String res) {
+                Log.e("Register onSuccess", res);
+                MyResponse myResponse = new Gson().fromJson(res, MyResponse.class);
+                if (myResponse.isResult()) {
+                    Log.e("postImage", "onSuccess: " + myResponse);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            showToast("图片上传成功!");
+                            startActivity(new Intent(TestImageActivity.this, LoginActivity.class));
+                            finish();
+                        }
+                    });
+
+                } else {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            showToast("图片上传失败");
+                        }
+                    });
+
+                }
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+
+            }
+        });
+    }
+
+    /**
+     * 将图片转化为string
+     *
+     * @param bitmap
+     * @return
+     */
+    public String bitmapToString(Bitmap bitmap) {
+        //将Bitmap转换成字符串
+        String string = null;
+        ByteArrayOutputStream bStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bStream);
+        byte[] bytes = bStream.toByteArray();
+        string = Base64.encodeToString(bytes, Base64.DEFAULT);
+        return string;
     }
 
 
+    /**
+     * String 转换 图片
+     *
+     * @param string
+     * @return
+     */
+
+    public Bitmap stringToBitmap(String string) {
+        // 将字符串转换成Bitmap类型
+        Bitmap bitmap = null;
+        try {
+            byte[] bitmapArray;
+            bitmapArray = Base64.decode(string, Base64.DEFAULT);
+            bitmap = BitmapFactory.decodeByteArray(bitmapArray, 0,
+                    bitmapArray.length);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bitmap;
+
+    }
 }
