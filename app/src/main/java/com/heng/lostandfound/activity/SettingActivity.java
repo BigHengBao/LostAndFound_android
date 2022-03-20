@@ -1,5 +1,6 @@
 package com.heng.lostandfound.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -54,7 +55,8 @@ public class SettingActivity extends BaseActivity {
                 switch (position) {
                     case 0:
                         showToast("退出登陆");
-//                        startActivity(new Intent(AllUseActivity.this, **.class));
+                        startActivity(new Intent(SettingActivity.this, LoginActivity.class));
+                        finish();
                         break;
                     case 1:
                         showToast("隐私权限");

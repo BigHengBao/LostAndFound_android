@@ -22,6 +22,9 @@ public class StringUtils {
      * @return
      */
     public String bitmapToString(Bitmap bitmap) {
+        if (bitmap == null) {
+            return null;
+        }
         //将Bitmap转换成字符串
         String string = null;
         ByteArrayOutputStream bStream = new ByteArrayOutputStream();
@@ -38,6 +41,9 @@ public class StringUtils {
      * @return
      */
     public Bitmap stringToBitmap(String string) {
+        if (string == null) {
+            return null;
+        }
         // 将字符串转换成Bitmap类型
         Bitmap bitmap = null;
         try {

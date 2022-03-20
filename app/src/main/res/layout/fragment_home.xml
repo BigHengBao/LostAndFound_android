@@ -36,13 +36,13 @@
                 android:text="天气"
                 android:textSize="20sp" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_home_image"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/teal_700"
-                app:civ_border_width="1dp" />
+            <!--            <de.hdodenhof.circleimageview.CircleImageView-->
+            <!--                android:id="@+id/iv_home_image"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:background="@color/teal_700"-->
+            <!--                app:civ_border_width="1dp" />-->
         </LinearLayout>
 
         <LinearLayout

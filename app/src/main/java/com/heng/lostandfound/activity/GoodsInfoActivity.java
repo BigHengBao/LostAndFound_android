@@ -25,11 +25,14 @@ import com.heng.lostandfound.entity.UserCollection;
 import com.heng.lostandfound.fragment.GoodsCommentFragment;
 import com.heng.lostandfound.fragment.GoodsIntroductionFragment;
 import com.heng.lostandfound.utils.Constant;
+import com.heng.lostandfound.utils.StringUtils;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * @author : HengZhang
@@ -38,7 +41,8 @@ import java.util.List;
  */
 public class GoodsInfoActivity extends BaseActivity implements View.OnClickListener {
 
-    ImageView goodsImg, backIv, collectionIv;
+    ImageView goodsInfoTv, backIv, collectionIv;
+    CircleImageView goodsInfoCiv;
     Button introductionBtn, commentsBtn;
     ViewPager goodsInfoVp;
     List<Fragment> VPList;
@@ -56,7 +60,7 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     protected void initView() {
-        goodsImg = findViewById(R.id.goods_image);
+        goodsInfoTv = findViewById(R.id.goods_image);
         introductionBtn = findViewById(R.id.goods_introduction);
         commentsBtn = findViewById(R.id.goods_comment);
         goodsInfoVp = findViewById(R.id.goods_info_vp);
@@ -81,6 +85,7 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
         setGoodsComments();
         updateCollection();
     }
+
 
     //收藏
     private void updateCollection() {
@@ -223,6 +228,8 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
                     goodsInfoItem = gson.fromJson(myResponse.getMsg(), GoodsInfoItem.class);
                     Log.e("", "goodsInfoItem: " + goodsInfoItem);
 
+                    // todo：设置civ
+                    goodsInfoTv.setImageBitmap(new StringUtils().stringToBitmap(goodsInfoItem.getGoods().getgImage()));
                     //todo: 加载数据到内存里
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("goodsInfoItem", goodsInfoItem);

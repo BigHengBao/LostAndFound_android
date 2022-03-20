@@ -87,7 +87,7 @@ public class HomeFragment extends BaseFragment {
         pointLayout = mRootView.findViewById(R.id.home_point);
         defaultGv = mRootView.findViewById(R.id.home_gv);
         mRecyclerView = mRootView.findViewById(R.id.home_recycler_view);
-        civ = mRootView.findViewById(R.id.iv_home_image);
+//        civ = mRootView.findViewById(R.id.iv_home_image);
     }
 
     @Override
@@ -108,12 +108,12 @@ public class HomeFragment extends BaseFragment {
         getAllOrder();
 
         initRecycler();
-        civ.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateTo(TestImageActivity.class);
-            }
-        });
+//        civ.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                navigateTo(TestImageActivity.class);
+//            }
+//        });
     }
 
     //装配所有的启事信息
