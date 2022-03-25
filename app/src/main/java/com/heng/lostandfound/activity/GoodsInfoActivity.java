@@ -70,6 +70,7 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     protected void initData() {
+
         //todo: 获取数据
         goodsName = (String) getIntent().getSerializableExtra("goodsName");
         authorName = (String) getIntent().getSerializableExtra("authorName");

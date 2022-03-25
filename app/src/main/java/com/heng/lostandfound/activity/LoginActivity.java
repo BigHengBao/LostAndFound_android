@@ -43,6 +43,7 @@ public class LoginActivity extends BaseActivity {
         loginBtn = findViewById(R.id.btn_login);
         toRegisterBtn = findViewById(R.id.btn_to_register);
 
+
         //todo: 方便测试，后期删除
         accountEd.setText("20191110000");
         pwdEd.setText("123");
@@ -50,6 +51,8 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override

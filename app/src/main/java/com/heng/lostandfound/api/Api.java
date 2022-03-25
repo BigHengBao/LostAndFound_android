@@ -43,6 +43,36 @@ public class Api {
         return api;
     }
 
+    public static Api config(String cityName) {
+        client = new OkHttpClient.Builder()
+                .build();
+        requestUrl = ApiConfig.WEATHER_BASE + "&city=" + cityName;
+        return api;
+    }
+
+    //get请求
+    public void getRequest(Context context, final ApiCallback callback) {
+        //创建Request 对象
+        Request request = new Request.Builder()
+                .url(requestUrl)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("onFailure,网络请求失败", e.getMessage());
+                callback.onFailure(e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String result = response.body().string();
+                callback.onSuccess(result);
+            }
+        });
+
+    }
+
     // post请求
     public void postRequest(Context context, final ApiCallback callback) {
         System.out.println("postRequest:" + mParams.toString());

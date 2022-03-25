@@ -1,6 +1,7 @@
 package com.heng.lostandfound.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,8 @@ import com.heng.lostandfound.entity.Order;
 import com.heng.lostandfound.utils.Constant;
 
 import java.io.Serializable;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * @author : HengZhang
@@ -90,8 +93,6 @@ public class GoodsIntroductionFragment extends BaseFragment {
         Bundle goodsInfoBundle = getActivity().getIntent().getExtras();
         goodsInfoItem = (GoodsInfoItem) goodsInfoBundle.getSerializable("goodsInfoItem");
         setGoodsInfos();
-
-//        Log.e("TAG", "GoodsIntroduct: " + goodsInfoItem);
 
     }
 }

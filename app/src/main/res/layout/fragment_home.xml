@@ -10,31 +10,54 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:background="@color/white_background"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
             android:layout_weight="1"
+            android:background="@color/white_background"
             android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+            <!--            <Button-->
+            <!--                android:id="@+id/test_map"-->
+            <!--                android:text="测试地图"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:layout_height="100dp"/>-->
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="消息"
                 android:textSize="20sp" />
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="天气"
                 android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iv_home_weather"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
 
             <!--            <de.hdodenhof.circleimageview.CircleImageView-->
             <!--                android:id="@+id/iv_home_image"-->
@@ -51,6 +74,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_weight="1"
+            android:background="@color/white_background"
             android:orientation="horizontal">
 
             <ImageView
@@ -79,12 +103,14 @@
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
             android:layout_weight="4"
+            android:background="@color/white_background"
             android:orientation="vertical">
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/home_img_vp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white_background"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <LinearLayout

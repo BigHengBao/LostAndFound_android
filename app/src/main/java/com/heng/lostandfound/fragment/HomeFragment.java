@@ -1,12 +1,14 @@
 package com.heng.lostandfound.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,8 +22,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.heng.lostandfound.MainActivity;
 import com.heng.lostandfound.R;
-import com.heng.lostandfound.activity.TestImageActivity;
+import com.heng.lostandfound.activity.MapActivity;
+import com.heng.lostandfound.activity.PluginActivity;
+import com.heng.lostandfound.activity.WeatherActivity;
 import com.heng.lostandfound.adapter.HomeGVAdapter;
 import com.heng.lostandfound.adapter.HomePicVPAdapter;
 import com.heng.lostandfound.adapter.HomeRecyclerAdapter;
@@ -31,12 +36,11 @@ import com.heng.lostandfound.api.ApiConfig;
 import com.heng.lostandfound.entity.HomeGVItem;
 import com.heng.lostandfound.entity.MyResponse;
 import com.heng.lostandfound.entity.RecyclerItem;
+import com.heng.lostandfound.entity.WeatherInfo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * @author : HengZhang
@@ -51,7 +55,9 @@ public class HomeFragment extends BaseFragment {
     ViewPager homeVp;
     GridView defaultGv;
     LinearLayout pointLayout;
-    CircleImageView civ;
+    ImageView weatherIv;
+    Button testMapBtn;
+
 
     private RecyclerView mRecyclerView;
     private HomeRecyclerAdapter mHomeAdapter;
@@ -87,11 +93,20 @@ public class HomeFragment extends BaseFragment {
         pointLayout = mRootView.findViewById(R.id.home_point);
         defaultGv = mRootView.findViewById(R.id.home_gv);
         mRecyclerView = mRootView.findViewById(R.id.home_recycler_view);
+        weatherIv = mRootView.findViewById(R.id.iv_home_weather);
+//        testMapBtn = mRootView.findViewById(R.id.test_map);
 //        civ = mRootView.findViewById(R.id.iv_home_image);
     }
 
     @Override
     protected void initData() {
+//        testMapBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), MapActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         //todo: 初始化图片
         initPager();
 
@@ -108,12 +123,52 @@ public class HomeFragment extends BaseFragment {
         getAllOrder();
 
         initRecycler();
-//        civ.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                navigateTo(TestImageActivity.class);
-//            }
-//        });
+
+        //todo:设置天气信息
+        setWeatherInfo();
+    }
+
+    // 设置天气信息
+    private void setWeatherInfo() {
+
+        String cityName = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE).getString("district", "");
+        Api.config(cityName).postRequest(getActivity(), new ApiCallback() {
+            @Override
+            public void onSuccess(String res) {
+//                Log.e("TAG", "setWeatherInfo onSuccess: " + res);
+                WeatherInfo weatherInfo = new Gson().fromJson(res, WeatherInfo.class);
+                Log.e("TAG", "setWeatherInfo onSuccess: " + weatherInfo.getWea());
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (weatherInfo.getWea().equals("多云")) {
+                            weatherIv.setImageResource(R.mipmap.weather_cloudy_img);
+                        } else if (weatherInfo.getWea().equals("晴")) {
+                            weatherIv.setImageResource(R.mipmap.weather_sun_img);
+                        } else if (weatherInfo.getWea().contains("雨")) {
+                            weatherIv.setImageResource(R.mipmap.weather_rain_img);
+                        } else if (weatherInfo.getWea().contains("雪")) {
+                            weatherIv.setImageResource(R.mipmap.weather_snow_img);
+                        } else {
+                            weatherIv.setImageResource(R.mipmap.weather_sun_img);
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.e(TAG, "setWeatherInfo onFailure: 失败！");
+            }
+        });
+
+        weatherIv.setImageBitmap(null);
+        weatherIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), WeatherActivity.class));
+            }
+        });
     }
 
     //装配所有的启事信息
@@ -414,4 +469,9 @@ public class HomeFragment extends BaseFragment {
         mRecyclerView.setAdapter(mHomeAdapter);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setWeatherInfo();
+    }
 }

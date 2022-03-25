@@ -1,5 +1,6 @@
 package com.heng.lostandfound.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -57,6 +58,10 @@ public class PluginActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
+                        showToast("天气");
+                        startActivity(new Intent(PluginActivity.this, WeatherActivity.class));
+                        break;
+                    case 1:
                         showToast("待续");
 //                        startActivity(new Intent(AllUseActivity.this, **.class));
                         break;
@@ -66,9 +71,10 @@ public class PluginActivity extends BaseActivity {
     }
 
     private void addDataToList() {
+        mLvDatas.add("天气");
         mLvDatas.add("待续");
 
-        int[] images = {R.mipmap.permissions_image};
+        int[] images = {R.mipmap.weather_image, R.mipmap.permissions_image};
 
         MeLvAdapter meLvAdapter = new MeLvAdapter(this, mLvDatas, images);
         pluginLv.setAdapter(meLvAdapter);

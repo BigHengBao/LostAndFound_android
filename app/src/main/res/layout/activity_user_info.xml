@@ -75,7 +75,7 @@
             android:gravity="right"
             android:text="用户名*："
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_userinfo_account"
@@ -109,28 +109,28 @@
             android:gravity="right"
             android:text="性别*："
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/tv_userinfo_boy"
+            android:id="@+id/tv_userinfo_sex"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:text="男"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <RadioButton
-            android:id="@+id/tv_userinfo_girl"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="2"
-            android:checked="true"
-            android:text="女"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+<!--        <RadioButton-->
+<!--            android:id="@+id/tv_userinfo_girl"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_weight="2"-->
+<!--            android:checked="true"-->
+<!--            android:text="女"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="20sp" />-->
 
     </RadioGroup>
 
@@ -154,7 +154,7 @@
             android:gravity="right"
             android:text="真实姓名*："
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/tv_userinfo_rname"
@@ -188,7 +188,7 @@
             android:gravity="right"
             android:text="联系方式*："
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_userinfo_phone"
@@ -222,7 +222,7 @@
             android:gravity="right"
             android:text="地址*："
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_userinfo_address"
@@ -257,7 +257,7 @@
             android:gravity="right"
             android:text="个人介绍："
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_userinfo_write"

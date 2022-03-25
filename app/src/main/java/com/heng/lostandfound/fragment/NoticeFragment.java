@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -53,7 +54,7 @@ public class NoticeFragment extends BaseFragment {
     RadioButton getTypeBtn, lookingTypeBtn;
     Spinner gTypeSpinner;  //下拉框
     Button submitBtn;
-    ImageView noticeIv;
+    ImageView noticeIv, locationIv;
     List<String> goodsTypes;
     String gType;  //物品类型
     Integer orderType;
@@ -82,6 +83,7 @@ public class NoticeFragment extends BaseFragment {
         gTypeSpinner = mRootView.findViewById(R.id.goods_spinner);
         submitBtn = mRootView.findViewById(R.id.btn_order_submit);
         noticeIv = mRootView.findViewById(R.id.notice_submit_image);
+        locationIv = mRootView.findViewById(R.id.iv_notice_location);
 
         // todo: 测试数据，后期得删除
         gNameEd.setText("");
@@ -93,6 +95,14 @@ public class NoticeFragment extends BaseFragment {
     protected void initData() {
 
         setSpinner();
+
+        locationIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addressEd.setText(
+                        getActivity().getSharedPreferences("data", Context.MODE_PRIVATE).getString("address", ""));
+            }
+        });
 
         //这一两行代码主要是向用户请求图片权限
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -149,6 +159,10 @@ public class NoticeFragment extends BaseFragment {
             }
         });
 
+    }
+
+    //获取本地信息
+    private void getLocation() {
     }
 
     private void setSpinner() {

@@ -26,7 +26,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class UserInfoActivity extends BaseActivity {
     ImageView backIv;
     TextView uAccountTv, rNameTv, uPhoneTv, addressTv, uWriteTv;
-    RadioButton boyBtn, girlBtn;
+    RadioButton sexBtn;
     CircleImageView userInfoIv;
     User user;
 
@@ -43,8 +43,7 @@ public class UserInfoActivity extends BaseActivity {
         uPhoneTv = findViewById(R.id.tv_userinfo_phone);
         addressTv = findViewById(R.id.tv_userinfo_address);
         uWriteTv = findViewById(R.id.tv_userinfo_write);
-        boyBtn = findViewById(R.id.tv_userinfo_boy);
-        girlBtn = findViewById(R.id.tv_userinfo_girl);
+        sexBtn = findViewById(R.id.tv_userinfo_sex);
         userInfoIv = findViewById(R.id.userinfo_iv);
     }
 
@@ -117,13 +116,12 @@ public class UserInfoActivity extends BaseActivity {
         addressTv.setText(user.getuAddress());
         uWriteTv.setText(user.getuWrite());
         userInfoIv.setImageBitmap(new StringUtils().stringToBitmap(user.getUserImage()));
+        sexBtn.setChecked(true);
 
         if (user.getuSex() == Constant.USER_MAN) {
-            boyBtn.setChecked(true);
-            girlBtn.setChecked(false);
+          sexBtn.setText("男");
         } else {
-            girlBtn.setChecked(true);
-            boyBtn.setChecked(false);
+            sexBtn.setText("女");
         }
     }
 }
