@@ -1,22 +1,18 @@
 package com.heng.lostandfound.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.Manifest;
-import android.os.Build;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.amap.api.navi.model.search.LatLonPoint;
 import com.heng.lostandfound.R;
-
+/**
+ * @author : HengZhang
+ * @date : 2022/3/12 19:32
+ * 高德地图定位
+ */
 public class MapActivity extends BaseActivity {
 
     //声明AMapLocationClient类对象

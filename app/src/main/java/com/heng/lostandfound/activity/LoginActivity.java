@@ -1,6 +1,7 @@
 package com.heng.lostandfound.activity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -30,6 +31,7 @@ import java.util.HashMap;
 public class LoginActivity extends BaseActivity {
     EditText accountEd, pwdEd;
     Button loginBtn, toRegisterBtn;
+    ProgressDialog dialog ;
 
     @Override
     protected int initLayout() {
@@ -42,6 +44,8 @@ public class LoginActivity extends BaseActivity {
         pwdEd = findViewById(R.id.ed_login_pwd);
         loginBtn = findViewById(R.id.btn_login);
         toRegisterBtn = findViewById(R.id.btn_to_register);
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("正在加载中");
 
 
         //todo: 方便测试，后期删除
@@ -60,6 +64,7 @@ public class LoginActivity extends BaseActivity {
                 String account = accountEd.getText().toString().trim();
                 String pwd = pwdEd.getText().toString().trim();
                 login(account, pwd);
+                dialog.show();
             }
         });
 
@@ -109,12 +114,15 @@ public class LoginActivity extends BaseActivity {
                             editor.putString("username", account);
                             editor.apply();
 
+
+
                             Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             //todo: 添加用户数据
                             intent.putExtra("userAccount", account);
                             startActivity(intent);
                             finish();
+                            dialog.dismiss();
                         }
                     });
 
@@ -122,6 +130,7 @@ public class LoginActivity extends BaseActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            dialog.dismiss();
                             Toast.makeText(getApplicationContext(), "登陆失败", Toast.LENGTH_SHORT).show();
                         }
                     });

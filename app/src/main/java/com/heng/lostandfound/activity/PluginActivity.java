@@ -17,8 +17,6 @@ import java.util.List;
  * @date : 2022/3/12 21:02
  * 插件界面
  */
-
-
 public class PluginActivity extends BaseActivity {
     ListView pluginLv;
     ImageView backIv;

@@ -158,7 +158,7 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
     //获取服务带你对应物品的信息
     private void setGoodsComments() {
         try {
-            Thread.sleep(100);
+            Thread.sleep(200);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -100,6 +100,7 @@
             <ImageView
                 android:id="@+id/notice_submit_image"
                 android:layout_width="0dp"
+                android:src="@mipmap/notice_goods_img"
                 android:layout_height="match_parent"
                 android:layout_weight="6" />
 

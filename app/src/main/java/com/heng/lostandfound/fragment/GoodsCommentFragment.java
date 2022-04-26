@@ -118,7 +118,7 @@ public class GoodsCommentFragment extends BaseFragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            showToast("启事提交成功");
+                            showToast("评论提交成功");
                         }
                     });
 
@@ -126,7 +126,7 @@ public class GoodsCommentFragment extends BaseFragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            showToast("启事提交失败");
+                            showToast("评论提交失败");
                         }
                     });
                 }

@@ -13,6 +13,7 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.amap.api.services.core.ServiceSettings;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -112,12 +113,17 @@ public class MainActivity extends BaseActivity {
      */
     private void getCurrentLocationLatLng() {
         try {
+                        ServiceSettings.updatePrivacyShow(this, true, true);
+            ServiceSettings.updatePrivacyAgree(this,true);
             //初始化定位
             mLocationClient = new AMapLocationClient(getApplicationContext());
             //设置定位回调监听
             mLocationClient.setLocationListener(mLocationListener);
             //初始化AMapLocationClientOption对象
             mLocationOption = new AMapLocationClientOption();
+
+
+
 
  /* //设置定位场景，目前支持三种场景（签到、出行、运动，默认无场景） 设置了场景就不用配置定位模式等
     option.setLocationPurpose(AMapLocationClientOption.AMapLocationPurpose.SignIn);

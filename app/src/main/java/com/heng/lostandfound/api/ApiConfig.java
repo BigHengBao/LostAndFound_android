@@ -7,7 +7,7 @@ package com.heng.lostandfound.api;
  */
 
 public class ApiConfig {
-    public static final String BASE_URl = "http://192.168.1.102:8080/app";
+    public static final String BASE_URl = "http://192.168.1.106:8080/app";
     public static final String USER_LOGIN = "/user/login"; //登录
     public static final String USER_REGISTER = "/user/register"; //注册
     public static final String GET_USER_INFO = "/user/getUserInfo"; //获取用户信息

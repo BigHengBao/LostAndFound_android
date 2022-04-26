@@ -57,14 +57,21 @@ public class GoodsIntroductionFragment extends BaseFragment {
         setGoodsIntroduction();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-//        setGoodsIntroduction();
+
+    public void setGoodsIntroduction() {
+        try {
+            Thread.sleep(500);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Bundle goodsInfoBundle = getActivity().getIntent().getExtras();
+        goodsInfoItem = (GoodsInfoItem) goodsInfoBundle.getSerializable("goodsInfoItem");
+        setGoodsInfos();
     }
 
     private void setGoodsInfos() {
         if (goodsInfoItem != null) {
+            Log.e("TAG", "setGoodsInfos: "+goodsInfoItem);
             Goods goods = goodsInfoItem.getGoods();
             Order order = goodsInfoItem.getOrder();
 
@@ -81,18 +88,6 @@ public class GoodsIntroductionFragment extends BaseFragment {
                 goodsTimeTv.setText(goods.getLoseTime());
             }
         }
-
-    }
-
-    public void setGoodsIntroduction() {
-        try {
-            Thread.sleep(100);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Bundle goodsInfoBundle = getActivity().getIntent().getExtras();
-        goodsInfoItem = (GoodsInfoItem) goodsInfoBundle.getSerializable("goodsInfoItem");
-        setGoodsInfos();
 
     }
 }
