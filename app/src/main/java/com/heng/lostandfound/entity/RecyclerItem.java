@@ -86,7 +86,6 @@ public class RecyclerItem implements Serializable {
                 ", authorName='" + authorName + '\'' +
                 ", goodsType='" + goodsType + '\'' +
                 ", orderTime=" + orderTime +
-                ", goodsImage=" + goodsImage +
                 '}';
     }
 }

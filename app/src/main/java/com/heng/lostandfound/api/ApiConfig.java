@@ -11,7 +11,7 @@ public class ApiConfig {
     public static final String USER_LOGIN = "/user/login"; //登录
     public static final String USER_REGISTER = "/user/register"; //注册
     public static final String GET_USER_INFO = "/user/getUserInfo"; //获取用户信息
-    public static final String ADJUST_USER_INFO = "/user/adjustUserInfo"; //获取用户信息
+    public static final String ADJUST_USER_INFO = "/user/adjustUserInfo"; //修改个人用户信息
     public static final String GET_ALL_ORDER = "/order/getOrderList"; //获得所有的order
     public static final String ADD_ORDER = "/order/addOrder"; //获得所有的order
     public static final String GET_ALL_GOODS_TYPE = "/order/getAllGoodsType"; //获得所有的goodsType

@@ -62,7 +62,6 @@ public class CommentItem implements Serializable {
                 "username='" + username + '\'' +
                 ", content='" + content + '\'' +
                 ", addTime='" + addTime + '\'' +
-                ", userImg='" + userImg + '\'' +
                 '}';
     }
 }

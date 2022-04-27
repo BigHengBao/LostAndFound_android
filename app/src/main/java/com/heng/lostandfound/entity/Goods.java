@@ -107,7 +107,6 @@ public class Goods implements Serializable {
                 ", getTime=" + getTime +
                 ", loseTime=" + loseTime +
                 ", content='" + content + '\'' +
-                ", gImage=" + gImage +
                 ", address='" + address + '\'' +
                 '}';
     }

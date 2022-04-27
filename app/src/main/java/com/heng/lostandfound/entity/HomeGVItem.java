@@ -61,7 +61,6 @@ public class HomeGVItem implements Serializable {
     public String toString() {
         return "HomeGVItem{" +
                 "itemName='" + itemName + '\'' +
-                ", ItemImg=" + ItemImg +
                 ", userName='" + userName + '\'' +
                 ", userAccount='" + userAccount + '\'' +
                 '}';

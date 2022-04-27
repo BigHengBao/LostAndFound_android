@@ -82,7 +82,6 @@ public class AdjustUserInfoActivity extends BaseActivity {
         getUserInfo();
         setUserInfo();
         adjustUserInfoImage();
-
     }
 
     //设置所有按钮的触发事件
@@ -125,6 +124,7 @@ public class AdjustUserInfoActivity extends BaseActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 adjustUserInfo(user);
+                                Log.e("TAG", "adjustUserInfo: " + user);
 //                                    Toast.makeText(MainActivity.this, "点击了确定的按钮", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
                             }
@@ -135,7 +135,7 @@ public class AdjustUserInfoActivity extends BaseActivity {
     }
 
     public void adjustUserInfo(User user) {
-        System.out.println("adjustUserInfo:" + user);
+        Log.e("TAG", "adjustUserInfo: " + user);
         Gson gson = new Gson();
 
         HashMap<String, Object> params = new HashMap<String, Object>();
@@ -143,14 +143,14 @@ public class AdjustUserInfoActivity extends BaseActivity {
         params.put("requestId", "adjustUser");
         params.put("user", gson.toJson(user));
 
-        System.out.println("adjustUser:" + params.toString());
+        Log.d("TAG", "adjustUserInfo: " + params.toString());
         Api.config(ApiConfig.ADJUST_USER_INFO, params).postRequest(this, new ApiCallback() {
             @Override
             public void onSuccess(final String res) {
-                Log.e("Register onSuccess", res);
+                Log.e("adjustUser onSuccess", res);
                 MyResponse myResponse = gson.fromJson(res, MyResponse.class);
                 if (myResponse.isResult()) {
-                    Log.e("", "onSuccess: " + myResponse);
+//                    Log.e("", "onSuccess: " + myResponse);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
