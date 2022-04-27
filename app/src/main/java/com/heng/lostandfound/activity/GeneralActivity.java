@@ -16,7 +16,7 @@ import java.util.List;
  * @date : 2022/3/12 19:53
  * 通用界面
  */
-public class AllUseActivity extends BaseActivity {
+public class GeneralActivity extends BaseActivity {
     ListView allUseLv;
     ImageView backIv;
     List<String> mLvDatas = new ArrayList<>();

@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/setting"
     android:orientation="vertical"
-    tools:context=".activity.UserInfoActivity">
+    tools:context=".activity.AdjustUserInfoActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white_background"
+        android:background="@color/white"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/image_userinfo_back"
+            android:id="@+id/image_adjust_userinfo_back"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -27,7 +27,7 @@
             android:layout_gravity="center"
             android:layout_weight="5"
             android:gravity="center"
-            android:text="个人信息"
+            android:text="编辑个人信息"
             android:textColor="@color/black"
             android:textSize="30sp" />
 
@@ -37,20 +37,22 @@
             android:layout_weight="1" />
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:background="@color/white_background_plus"
+        android:background="@color/white"
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/userinfo_iv"
+            android:id="@+id/adjust_userinfo_iv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            android:src="@mipmap/woman"
             app:civ_border_width="2dp" />
 
     </LinearLayout>
@@ -78,7 +80,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/tv_userinfo_account"
+            android:id="@+id/tv_adjust_userinfo_account"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -112,25 +114,25 @@
             android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/tv_userinfo_sex"
+            android:id="@+id/rb_adjust_userinfo_man"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="3"
+            android:layout_weight="1"
             android:text="男"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <!--        <RadioButton-->
-        <!--            android:id="@+id/tv_userinfo_girl"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_gravity="center"-->
-        <!--            android:layout_weight="2"-->
-        <!--            android:checked="true"-->
-        <!--            android:text="女"-->
-        <!--            android:textColor="@color/black"-->
-        <!--            android:textSize="20sp" />-->
+        <RadioButton
+            android:id="@+id/rb_adjust_userinfo_woman"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:checked="true"
+            android:text="女"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
     </RadioGroup>
 
@@ -156,8 +158,8 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/tv_userinfo_rname"
+        <EditText
+            android:id="@+id/tv_adjust_userinfo_rname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -190,8 +192,8 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/tv_userinfo_phone"
+        <EditText
+            android:id="@+id/tv_adjust_userinfo_phone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -224,8 +226,8 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/tv_userinfo_address"
+        <EditText
+            android:id="@+id/tv_adjust_userinfo_address"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -259,8 +261,8 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/tv_userinfo_write"
+        <EditText
+            android:id="@+id/tv_adjust_userinfo_write"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
@@ -273,30 +275,28 @@
     </LinearLayout>
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/white_background_plus">
 
         <android.widget.Button
-            android:layout_marginTop="10dp"
-            android:id="@+id/to_adjust_user_info_btn"
+            android:id="@+id/adjust_user_info_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/operation_bg"
-            android:text="编辑个人信息"
+            android:text="确认提交"
             android:textSize="20sp" />
 
     </LinearLayout>
 
     <View
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/white_background_plus" />
-
+        android:layout_weight="2"
+        android:background="@color/white" />
 
 </LinearLayout>

@@ -19,7 +19,6 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 如果您的应用需要后台定位权限，且有可能运行在Android Q设备上,并且设置了target>28，必须增加这个权限声明 -->
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/app"
@@ -29,6 +28,9 @@
         android:roundIcon="@mipmap/app"
         android:supportsRtl="true"
         android:theme="@style/Theme.LostAndFound">
+        <activity
+            android:name=".activity.AdjustUserInfoActivity"
+            android:exported="true" />
         <activity
             android:name=".activity.WeatherActivity"
             android:exported="true" />
@@ -62,7 +64,7 @@
             android:name=".activity.SettingActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.AllUseActivity"
+            android:name=".activity.GeneralActivity"
             android:exported="true" />
         <activity
             android:name=".activity.CodeActivity"

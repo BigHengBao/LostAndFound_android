@@ -8,11 +8,10 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.heng.lostandfound.R;
-import com.heng.lostandfound.activity.AllUseActivity;
+import com.heng.lostandfound.activity.GeneralActivity;
 import com.heng.lostandfound.activity.CodeActivity;
 import com.heng.lostandfound.activity.CollectionActivity;
 import com.heng.lostandfound.activity.PluginActivity;
@@ -143,7 +142,7 @@ public class MeFragment extends BaseFragment {
                         break;
                     case 1:
 //                        showToast("通用");
-                        navigateTo(AllUseActivity.class);
+                        navigateTo(GeneralActivity.class);
                         break;
                     case 2:
 //                        showToast("插件");

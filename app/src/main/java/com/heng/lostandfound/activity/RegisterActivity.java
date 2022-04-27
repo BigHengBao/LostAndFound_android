@@ -133,7 +133,7 @@ public class RegisterActivity extends BaseActivity {
                     dialog = new AlertDialog.Builder(RegisterActivity.this)
                             .setIcon(R.mipmap.dialog_img)//设置标题的图片
                             .setTitle("\t 提醒")//设置对话框的标题
-                            .setMessage("\n 是否确认注册用户？")//设置对话框的内容
+                            .setMessage("\n 是否确认注册用户？\n (此后用户名*将不可更改)")//设置对话框的内容
                             //设置对话框的按钮
                             .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                                 @Override

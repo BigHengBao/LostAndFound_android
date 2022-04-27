@@ -2,8 +2,10 @@ package com.heng.lostandfound.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -23,11 +25,17 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+/**
+ * @author : HengZhang
+ * @date : 2022/4/12 19:53
+ * 用户个人信息界面
+ */
 public class UserInfoActivity extends BaseActivity {
     ImageView backIv;
     TextView uAccountTv, rNameTv, uPhoneTv, addressTv, uWriteTv;
     RadioButton sexBtn;
     CircleImageView userInfoIv;
+    Button toAdjustUserInfoBtn;
     User user;
 
     @Override
@@ -45,6 +53,7 @@ public class UserInfoActivity extends BaseActivity {
         uWriteTv = findViewById(R.id.tv_userinfo_write);
         sexBtn = findViewById(R.id.tv_userinfo_sex);
         userInfoIv = findViewById(R.id.userinfo_iv);
+        toAdjustUserInfoBtn = findViewById(R.id.to_adjust_user_info_btn);
     }
 
     @Override
@@ -55,7 +64,19 @@ public class UserInfoActivity extends BaseActivity {
                 finish();
             }
         });
+        toAdjustUserInfoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(UserInfoActivity.this, AdjustUserInfoActivity.class));
+            }
+        });
+        getUserInfo();
+        setUserInfo();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         getUserInfo();
         setUserInfo();
     }
@@ -83,7 +104,7 @@ public class UserInfoActivity extends BaseActivity {
                         @Override
                         public void run() {
 
-                            Toast.makeText(UserInfoActivity.this, "成功", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(UserInfoActivity.this, "成功", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -91,7 +112,7 @@ public class UserInfoActivity extends BaseActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(UserInfoActivity.this, "失败", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserInfoActivity.this, "获取用户信息失败", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -119,7 +140,7 @@ public class UserInfoActivity extends BaseActivity {
         sexBtn.setChecked(true);
 
         if (user.getuSex() == Constant.USER_MAN) {
-          sexBtn.setText("男");
+            sexBtn.setText("男");
         } else {
             sexBtn.setText("女");
         }

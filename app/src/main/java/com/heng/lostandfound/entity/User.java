@@ -10,9 +10,9 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
     private String uAccount;  //账号
-    private  String uPwd;
+    private String uPwd;
     private String rName;
-    private  Integer uSex;
+    private Integer uSex;
     private String uPhone;
     private String uAddress;
     private Integer active;
@@ -127,7 +127,6 @@ public class User implements Serializable {
                 ", uAddress='" + uAddress + '\'' +
                 ", active='" + active + '\'' +
                 ", uLevel=" + uLevel +
-                ", userImage='" + userImage + '\'' +
                 ", uWrite='" + uWrite + '\'' +
                 '}';
     }
