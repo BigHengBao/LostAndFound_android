@@ -157,7 +157,7 @@ public class MeFragment extends BaseFragment {
             }
         });
         try {
-            Thread.sleep(800);
+            Thread.sleep(1000);
         } catch (Exception e) {
             e.printStackTrace();
         }

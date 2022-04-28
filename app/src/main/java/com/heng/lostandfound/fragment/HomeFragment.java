@@ -98,8 +98,6 @@ public class HomeFragment extends BaseFragment {
         weatherIv = mRootView.findViewById(R.id.iv_home_weather);
         searchEd = mRootView.findViewById(R.id.home_search_ed);
         searchIv = mRootView.findViewById(R.id.iv_search);
-//        testMapBtn = mRootView.findViewById(R.id.test_map);
-//        civ = mRootView.findViewById(R.id.iv_home_image);
     }
 
     @Override
@@ -146,7 +144,7 @@ public class HomeFragment extends BaseFragment {
         List<RecyclerItem> newList = new ArrayList<>();
 //        showToast(searchEd.getText().toString() + "搜索成功！");
         for (RecyclerItem item : mList) {
-            if (item.getGoodsName().contains(searchEd.getText().toString())){
+            if (item.getGoodsName().contains(searchEd.getText().toString())) {
                 newList.add(item);
             }
         }
@@ -349,7 +347,19 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                DefaultGVItem defaultGVItem = mDatas.get(position);
-                Intent intent;
+
+                showToast(mDatas.get(position).getItemName());
+                //筛选分类
+                List<RecyclerItem> newList = new ArrayList<>();
+                for (RecyclerItem item : mList) {
+                    if (item.getGoodsType().contains(mDatas.get(position).getItemName().toString())) {
+                        newList.add(item);
+                    }
+                }
+                //设置存在的产品
+                mHomeAdapter = new HomeRecyclerAdapter(newList, getContext());
+                mRecyclerView.setAdapter(mHomeAdapter);
+
                 switch (position) {
                     case 0:
 //                        intent = new Intent(getContext(), InCodeActivity.class);
@@ -363,7 +373,7 @@ public class HomeFragment extends BaseFragment {
                     case 1:
 //                        intent = new Intent(getContext(), CodePartyActivity.class);
 //                        startActivity(intent);
-//                        showToast("这是第" + position + "个");
+
                         break;
                     case 2:
 //                        intent = new Intent(getContext(), CodePartyActivity.class);
@@ -371,6 +381,21 @@ public class HomeFragment extends BaseFragment {
 //                        showToast("这是第" + position + "个");
                         break;
 
+                    case 3:
+
+                        break;
+
+                    case 4:
+                        break;
+
+                    case 5:
+                        break;
+
+                    case 6:
+                        break;
+
+                    case 7:
+                        break;
                 }
             }
         });
