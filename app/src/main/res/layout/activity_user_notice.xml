@@ -47,4 +47,14 @@
         android:layout_weight="5"
         android:background="@color/white_background" />
 
+    <Button
+        android:id="@+id/to_just_goods_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:text="编辑我的启事"
+        android:textColor="@color/black" />
+
 </LinearLayout>

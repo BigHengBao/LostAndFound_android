@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -55,10 +56,11 @@ public class HomeFragment extends BaseFragment {
     ViewPager homeVp;
     GridView defaultGv;
     LinearLayout pointLayout;
-    ImageView weatherIv;
+    ImageView weatherIv, searchIv;
     Button testMapBtn;
+    EditText searchEd;
 
-
+    LinearLayoutManager linearLayoutManager;
     private RecyclerView mRecyclerView;
     private HomeRecyclerAdapter mHomeAdapter;
     private List<RecyclerItem> mList = new ArrayList<>();
@@ -94,6 +96,8 @@ public class HomeFragment extends BaseFragment {
         defaultGv = mRootView.findViewById(R.id.home_gv);
         mRecyclerView = mRootView.findViewById(R.id.home_recycler_view);
         weatherIv = mRootView.findViewById(R.id.iv_home_weather);
+        searchEd = mRootView.findViewById(R.id.home_search_ed);
+        searchIv = mRootView.findViewById(R.id.iv_search);
 //        testMapBtn = mRootView.findViewById(R.id.test_map);
 //        civ = mRootView.findViewById(R.id.iv_home_image);
     }
@@ -126,6 +130,29 @@ public class HomeFragment extends BaseFragment {
 
         //todo:设置天气信息
         setWeatherInfo();
+
+        //设置搜索order
+        searchIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setSearchOrder();
+            }
+        });
+
+    }
+
+    //todo：设置搜索order
+    private void setSearchOrder() {
+        List<RecyclerItem> newList = new ArrayList<>();
+//        showToast(searchEd.getText().toString() + "搜索成功！");
+        for (RecyclerItem item : mList) {
+            if (item.getGoodsName().contains(searchEd.getText().toString())){
+                newList.add(item);
+            }
+        }
+        //设置存在的产品
+        mHomeAdapter = new HomeRecyclerAdapter(newList, getContext());
+        mRecyclerView.setAdapter(mHomeAdapter);
     }
 
     // 设置天气信息
@@ -440,7 +467,7 @@ public class HomeFragment extends BaseFragment {
     // 加载显示界面
     private void initRecycler() {
         // 设置布局管理器
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         mRecyclerView.setLayoutManager(linearLayoutManager);
 

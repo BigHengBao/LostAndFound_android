@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import java.util.List;
 
 public class UserNoticeActivity extends BaseActivity {
     ImageView backIv;
+    private Button toAdjustGoods;
     private RecyclerView mRecyclerView;
     private HomeRecyclerAdapter mHomeAdapter;
     private List<RecyclerItem> mList = new ArrayList<>();
@@ -41,6 +43,7 @@ public class UserNoticeActivity extends BaseActivity {
     protected void initView() {
         backIv = findViewById(R.id.image_usernotice_back);
         mRecyclerView = findViewById(R.id.usernotice_recycler_view);
+        toAdjustGoods = findViewById(R.id.to_just_goods_btn);
     }
 
     @Override
