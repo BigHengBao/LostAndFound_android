@@ -12,7 +12,11 @@ public class ApiConfig {
     public static final String USER_REGISTER = "/user/register"; //注册
     public static final String GET_USER_INFO = "/user/getUserInfo"; //获取用户信息
     public static final String ADJUST_USER_INFO = "/user/adjustUserInfo"; //修改个人用户信息
-    public static final String GET_ALL_ORDER = "/order/getOrderList"; //获得所有的order
+
+//    public static final String GET_ALL_ORDER = "/order/getOrderList";
+    public static final String GET_ALL_ORDER = "/cache/getCacheOrderList"; //获得所有的order
+
+
     public static final String ADD_ORDER = "/order/addOrder"; //获得所有的order
     public static final String GET_ALL_GOODS_TYPE = "/order/getAllGoodsType"; //获得所有的goodsType
     public static final String GET_GOODS_INFO = "/goods/getGoodsInfo"; //获得所有的goodsInfo

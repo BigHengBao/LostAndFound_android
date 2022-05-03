@@ -240,7 +240,7 @@ public class HomeFragment extends BaseFragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(getActivity(), "数据更新失败", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getActivity(), "数据更新失败", Toast.LENGTH_SHORT).show();
                                 }
                             });
 
@@ -382,7 +382,6 @@ public class HomeFragment extends BaseFragment {
                         break;
 
                     case 3:
-
                         break;
 
                     case 4:

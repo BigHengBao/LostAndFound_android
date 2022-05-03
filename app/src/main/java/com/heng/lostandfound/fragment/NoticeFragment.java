@@ -241,6 +241,7 @@ public class NoticeFragment extends BaseFragment {
                 MyResponse myResponse = gson.fromJson(res, MyResponse.class);
                 if (myResponse.isResult()) {
                     Log.e("submitOrder", "onSuccess: " + myResponse);
+                    clearTexts();
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -264,6 +265,15 @@ public class NoticeFragment extends BaseFragment {
 
             }
         });
+    }
+
+
+    //清空输入框
+    public void clearTexts(){
+        gNameEd.setText("");
+        addressEd.setText("");
+        contentEd.setText("");
+        noticeIv.setImageBitmap(null);
     }
 
     public static int ALBUM_RESULT_CODE = 0x999;
