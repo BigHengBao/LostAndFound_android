@@ -1,5 +1,5 @@
 # LostAndFound_android
-移动终端开发实践课大作业
+移动终端开发实践项目
 
 android端
 
