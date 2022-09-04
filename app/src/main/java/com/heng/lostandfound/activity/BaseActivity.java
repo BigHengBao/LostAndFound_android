@@ -23,7 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @SneakyThrows
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        getSupportActionBar().hide();// 隐藏ActionBar
+//        getSupportActionBar().hide();// 隐藏ActionBar
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         mContext = this;
